@@ -1,0 +1,407 @@
+/* PHASE 5.8 — PREMIUM PROFILE REDESIGN */
+
+.premium-profile-page {
+  padding-bottom: 44px;
+}
+
+.profile-command-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 36px;
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(59, 130, 246, 0.22), transparent 30%),
+    radial-gradient(circle at 90% 18%, rgba(124, 58, 237, 0.16), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.95));
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(300px, 0.58fr);
+  gap: 30px;
+  align-items: stretch;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);
+}
+
+.profile-command-hero::after {
+  content: '';
+  position: absolute;
+  right: -150px;
+  bottom: -170px;
+  width: 400px;
+  height: 400px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.profile-command-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.profile-identity-panel {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.premium-main-avatar {
+  width: 144px;
+  height: 144px;
+  flex: 0 0 144px;
+  border-radius: 46px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.7), transparent 45%),
+    linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
+  color: white;
+  display: grid;
+  place-items: center;
+  border: 5px solid white;
+  box-shadow:
+    0 28px 62px rgba(59, 130, 246, 0.25),
+    0 10px 22px rgba(15, 23, 42, 0.1);
+}
+
+.premium-main-avatar img,
+.profile-main-avatar img,
+.profile-avatar img,
+.sidebar-mini-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-command-hero h1 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: clamp(2.3rem, 5.4vw, 4.8rem);
+  font-weight: 950;
+  letter-spacing: -0.075em;
+  line-height: 0.94;
+}
+
+.profile-handle {
+  margin: 12px 0 0;
+  color: var(--lm-muted);
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.profile-chip-row {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.profile-chip-row span {
+  min-height: 44px;
+  padding: 0 15px;
+  border-radius: 999px;
+  background: white;
+  border: 1px solid var(--lm-border);
+  color: var(--lm-text);
+  font-size: 0.82rem;
+  font-weight: 950;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.055);
+}
+
+.profile-chip-row svg {
+  color: var(--lm-primary);
+}
+
+.profile-rank-terminal {
+  padding: 28px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.62), transparent 42%),
+    linear-gradient(145deg, #2563eb, #4f46e5 48%, #7c3aed);
+  color: white;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  min-height: 290px;
+  box-shadow:
+    0 32px 70px rgba(59, 130, 246, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.rank-terminal-glow {
+  width: 82px;
+  height: 82px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.18);
+  display: grid;
+  place-items: center;
+  margin-bottom: 8px;
+}
+
+.profile-rank-terminal span,
+.profile-rank-terminal p {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.profile-rank-terminal strong {
+  font-size: 2.35rem;
+  line-height: 1;
+  font-weight: 950;
+}
+
+.profile-rank-progress {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.profile-rank-progress div {
+  height: 100%;
+  border-radius: inherit;
+  background: white;
+}
+
+.profile-metric-card {
+  position: relative;
+  overflow: hidden;
+  padding: 23px;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 34%),
+    white;
+  border: 1px solid var(--lm-border);
+  box-shadow: var(--lm-shadow-soft);
+  transition: 0.18s ease;
+}
+
+.profile-metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.1);
+}
+
+.profile-metric-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 21px;
+  background: linear-gradient(135deg, #eff6ff, #eef2ff);
+  color: var(--lm-primary);
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+
+.profile-metric-card p {
+  margin: 0;
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.profile-metric-card h3 {
+  margin: 5px 0;
+  color: var(--lm-text);
+  font-size: 2.08rem;
+  font-weight: 950;
+}
+
+.profile-metric-card span {
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.profile-deep-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.36fr) minmax(320px, 0.64fr);
+  gap: 24px;
+}
+
+.profile-xp-console,
+.profile-rank-path {
+  padding: 28px;
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.profile-console-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.profile-console-header h2,
+.profile-rank-path h2 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: 1.5rem;
+  font-weight: 950;
+  letter-spacing: -0.04em;
+}
+
+.profile-console-header svg {
+  color: var(--lm-primary);
+}
+
+.profile-xp-layout {
+  padding: 18px;
+  border-radius: 30px;
+  background: #f8fafc;
+  border: 1px solid var(--lm-border);
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.profile-xp-ring {
+  width: 170px;
+  height: 170px;
+  border-radius: 50px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.65), transparent 45%),
+    conic-gradient(from 180deg, var(--lm-primary), var(--lm-secondary), var(--lm-primary));
+  color: white;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  box-shadow: 0 28px 62px rgba(59, 130, 246, 0.25);
+}
+
+.profile-xp-ring strong {
+  font-size: 2.25rem;
+  line-height: 1;
+  font-weight: 950;
+}
+
+.profile-xp-ring span {
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
+.profile-xp-copy h3 {
+  margin: 0;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+.profile-xp-copy p {
+  color: var(--lm-muted);
+  line-height: 1.7;
+}
+
+.rank-path-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.rank-path-item {
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 18px;
+  background: #f8fafc;
+  border: 1px solid var(--lm-border);
+  color: var(--lm-muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+}
+
+.rank-path-item.active {
+  color: var(--lm-primary);
+  background: #eff6ff;
+  border-color: rgba(59, 130, 246, 0.18);
+}
+
+.premium-badge-grid {
+  gap: 18px;
+}
+
+.premium-badge-card {
+  min-height: 178px;
+  padding: 23px;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 34%),
+    white;
+  border: 1px solid var(--lm-border);
+  box-shadow: var(--lm-shadow-soft);
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.premium-badge-card.locked {
+  opacity: 0.82;
+}
+
+.premium-badge-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 21px;
+  background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
+  color: white;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 16px 34px rgba(59, 130, 246, 0.22);
+}
+
+.premium-badge-card h3 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: 1rem;
+  font-weight: 950;
+}
+
+.premium-badge-card p {
+  margin: 6px 0 0;
+  color: var(--lm-muted);
+  line-height: 1.65;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 1100px) {
+  .profile-command-hero,
+  .profile-deep-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-rank-terminal {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-command-hero,
+  .profile-xp-console,
+  .profile-rank-path {
+    padding: 22px;
+    border-radius: 30px;
+  }
+
+  .profile-identity-panel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .premium-main-avatar {
+    width: 116px;
+    height: 116px;
+    flex-basis: 116px;
+    border-radius: 36px;
+  }
+
+  .profile-xp-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-xp-ring {
+    width: 142px;
+    height: 142px;
+    border-radius: 42px;
+  }
+}

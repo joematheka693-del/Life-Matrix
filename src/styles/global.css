@@ -1,0 +1,35 @@
+* { box-sizing: border-box; }
+:root {
+  --lm-bg: #f5f8ff;
+  --lm-card: #ffffff;
+  --lm-text: #182033;
+  --lm-muted: #6b7280;
+  --lm-primary: #3b82f6;
+  --lm-primary-dark: #1d4ed8;
+  --lm-secondary: #7c3aed;
+  --lm-success: #16a34a;
+  --lm-warning: #f59e0b;
+  --lm-danger: #ef4444;
+  --lm-border: #e5e7eb;
+  --lm-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  --lm-radius: 22px;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 35%), radial-gradient(circle at top right, rgba(124, 58, 237, 0.1), transparent 30%), var(--lm-bg);
+  color: var(--lm-text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+button, input, select { font-family: inherit; }
+button { cursor: pointer; }
+.glass-card { background: rgba(255,255,255,.86); border: 1px solid rgba(226,232,240,.9); box-shadow: var(--lm-shadow); backdrop-filter: blur(18px); border-radius: var(--lm-radius); }
+.btn-life { border: none; border-radius: 999px; background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary)); color: white; font-weight: 800; padding: 11px 18px; box-shadow: 0 14px 30px rgba(59,130,246,.28); transition: .2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-life:hover { color: white; transform: translateY(-2px); box-shadow: 0 18px 36px rgba(59,130,246,.36); }
+.btn-soft-life { border: 1px solid var(--lm-border); border-radius: 999px; background: white; color: var(--lm-text); font-weight: 850; padding: 11px 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: .2s ease; box-shadow: 0 12px 28px rgba(15,23,42,.05); }
+.btn-soft-life:hover { color: var(--lm-primary-dark); transform: translateY(-2px); }
+.page-kicker { margin: 0 0 10px; color: var(--lm-primary-dark); font-size: .78rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 7px; }
+.section-gap { margin-top: 24px; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.section-heading h2 { margin: 0; color: var(--lm-text); font-weight: 950; }

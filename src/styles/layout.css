@@ -1,0 +1,71 @@
+.life-app {
+  min-height: 100vh;
+  display: flex;
+  background: transparent;
+}
+
+.life-main {
+  flex: 1;
+  min-height: 100vh;
+  padding-left: 0;
+  transition: padding-left 0.25s ease;
+}
+
+.sidebar-open .life-main {
+  padding-left: 318px;
+}
+
+.sidebar-closed .life-main {
+  padding-left: 0;
+}
+
+.life-content {
+  padding: 28px;
+}
+
+.page-shell {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.page-shell h1 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: clamp(2.1rem, 4vw, 3.8rem);
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: -0.05em;
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .sidebar-open .life-main,
+  .sidebar-closed .life-main {
+    padding-left: 0;
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    display: block;
+    border: none;
+    background: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(2px);
+  }
+}
+
+@media (max-width: 768px) {
+  .life-content {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .life-content {
+    padding: 14px;
+  }
+}

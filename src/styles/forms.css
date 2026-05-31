@@ -1,0 +1,91 @@
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
+
+select {
+  cursor: pointer;
+}
+
+.matrix-form-card,
+.goal-form-card,
+.workout-form-card,
+.settings-card,
+.profile-settings-card {
+  overflow: visible;
+}
+
+.matrix-form-grid,
+.goal-form-grid,
+.workout-form-grid,
+.settings-form-grid {
+  gap: 18px !important;
+}
+
+.matrix-form-grid label,
+.goal-form-grid label,
+.workout-form-grid label,
+.settings-form-grid label,
+.profile-settings-card label {
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 900;
+  display: grid;
+  gap: 9px;
+}
+
+.matrix-form-grid input,
+.matrix-form-grid select,
+.goal-form-grid input,
+.goal-form-grid select,
+.workout-form-grid input,
+.workout-form-grid select,
+.settings-form-grid input,
+.settings-form-grid select,
+.profile-settings-card input,
+.profile-settings-card select {
+  min-height: 50px;
+  border: 1px solid var(--lm-border);
+  border-radius: 16px;
+  background-color: #f8fafc;
+  color: var(--lm-text);
+  outline: none;
+  padding: 0 16px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  transition: 0.18s ease;
+}
+
+.matrix-form-grid select,
+.goal-form-grid select,
+.workout-form-grid select,
+.settings-form-grid select,
+.profile-settings-card select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--lm-primary) 50%),
+    linear-gradient(135deg, var(--lm-primary) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) 22px,
+    calc(100% - 14px) 22px;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 42px;
+}
+
+.matrix-form-grid input:focus,
+.matrix-form-grid select:focus,
+.goal-form-grid input:focus,
+.goal-form-grid select:focus,
+.workout-form-grid input:focus,
+.workout-form-grid select:focus,
+.settings-form-grid input:focus,
+.settings-form-grid select:focus,
+.profile-settings-card input:focus,
+.profile-settings-card select:focus {
+  border-color: rgba(79, 70, 229, 0.55);
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.11);
+}

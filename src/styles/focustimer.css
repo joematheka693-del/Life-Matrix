@@ -1,0 +1,186 @@
+/* PHASE 6.9 — FOCUS TIMER SYSTEM */
+
+.focus-timer-section {
+  display: grid;
+}
+
+.focus-timer-card {
+  padding: 28px;
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--lm-primary) 16%, transparent), transparent 34%),
+    var(--lm-surface);
+  border: 1px solid var(--lm-border);
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.focus-timer-copy h2 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  font-weight: 950;
+  letter-spacing: -0.05em;
+}
+
+.focus-timer-copy p {
+  max-width: 660px;
+  color: var(--lm-muted);
+  line-height: 1.7;
+  margin: 8px 0 0;
+}
+
+.focus-mode-tabs {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.focus-mode-tabs button {
+  padding: 16px;
+  border-radius: 24px;
+  border: 1px solid var(--lm-border);
+  background: var(--lm-surface-soft);
+  color: var(--lm-text);
+  text-align: left;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.focus-mode-tabs button:hover,
+.focus-mode-tabs button.active {
+  background: var(--lm-surface);
+  border-color: color-mix(in srgb, var(--lm-primary) 35%, transparent);
+  box-shadow: 0 16px 34px color-mix(in srgb, var(--lm-primary) 12%, transparent);
+}
+
+.focus-mode-tabs strong {
+  display: block;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+.focus-mode-tabs span {
+  display: block;
+  margin-top: 4px;
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.focus-timer-console {
+  padding: 24px;
+  border-radius: 32px;
+  background: var(--lm-terminal-gradient);
+  color: white;
+  display: grid;
+  align-content: center;
+  gap: 18px;
+  box-shadow: 0 24px 54px color-mix(in srgb, var(--lm-primary) 24%, transparent);
+}
+
+.focus-timer-ring {
+  width: 230px;
+  height: 230px;
+  margin: 0 auto;
+  border-radius: 68px;
+  background: rgba(255, 255, 255, 0.16);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+}
+
+.focus-timer-ring svg {
+  width: 58px;
+  height: 58px;
+  padding: 12px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.focus-timer-ring strong {
+  color: white;
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: -0.05em;
+}
+
+.focus-timer-ring span {
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 950;
+}
+
+.focus-timer-console .habit-progress-info span,
+.focus-timer-console .habit-progress-info strong {
+  color: white;
+}
+
+.focus-timer-console .habit-progress-bar {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.focus-timer-console .habit-progress-fill {
+  background: white;
+}
+
+.focus-timer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.focus-timer-actions .btn-life {
+  background: white;
+  color: var(--lm-primary);
+}
+
+.focus-timer-actions .btn-soft-life {
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.focus-session-count {
+  padding: 14px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.88);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 900;
+}
+
+@media (max-width: 1000px) {
+  .focus-timer-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .focus-timer-card,
+  .focus-timer-console {
+    padding: 22px;
+    border-radius: 30px;
+  }
+
+  .focus-timer-ring {
+    width: 190px;
+    height: 190px;
+    border-radius: 54px;
+  }
+
+  .focus-timer-actions {
+    flex-direction: column;
+  }
+
+  .focus-timer-actions .btn-life,
+  .focus-timer-actions .btn-soft-life {
+    width: 100%;
+    justify-content: center;
+  }
+}

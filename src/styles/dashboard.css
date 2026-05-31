@@ -1,0 +1,315 @@
+/* PHASE 5.8 — PREMIUM DASHBOARD REDESIGN */
+
+.premium-dashboard-page {
+  padding-bottom: 44px;
+}
+
+.dashboard-command-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 36px;
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(59, 130, 246, 0.22), transparent 30%),
+    radial-gradient(circle at 90% 18%, rgba(124, 58, 237, 0.16), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.95));
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(300px, 0.58fr);
+  gap: 30px;
+  align-items: stretch;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);
+}
+
+.dashboard-command-hero h1 {
+  margin: 0;
+  max-width: 870px;
+  color: var(--lm-text);
+  font-size: clamp(2.25rem, 5.4vw, 4.75rem);
+  font-weight: 950;
+  letter-spacing: -0.075em;
+  line-height: 0.94;
+}
+
+.dashboard-command-hero p {
+  max-width: 760px;
+  color: var(--lm-muted);
+  line-height: 1.78;
+  font-weight: 650;
+}
+
+.dashboard-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.dashboard-rank-terminal {
+  padding: 28px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.62), transparent 42%),
+    linear-gradient(145deg, #2563eb, #4f46e5 48%, #7c3aed);
+  color: white;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  min-height: 290px;
+  box-shadow: 0 32px 70px rgba(59, 130, 246, 0.32);
+}
+
+.dashboard-terminal-icon {
+  width: 82px;
+  height: 82px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.18);
+  display: grid;
+  place-items: center;
+}
+
+.dashboard-rank-terminal span,
+.dashboard-rank-terminal p {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.dashboard-rank-terminal strong {
+  color: white;
+  font-size: 2.35rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.dashboard-terminal-progress {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.dashboard-terminal-progress div {
+  height: 100%;
+  border-radius: inherit;
+  background: white;
+}
+
+.dashboard-module-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.dashboard-module-card {
+  position: relative;
+  overflow: hidden;
+  padding: 23px;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 34%),
+    white;
+  border: 1px solid var(--lm-border);
+  box-shadow: var(--lm-shadow-soft);
+  transition: 0.18s ease;
+}
+
+.dashboard-module-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.1);
+}
+
+.dashboard-module-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.dashboard-module-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 21px;
+  background: linear-gradient(135deg, #eff6ff, #eef2ff);
+  color: var(--lm-primary);
+  display: grid;
+  place-items: center;
+}
+
+.dashboard-module-top span {
+  color: var(--lm-primary);
+  font-size: 0.82rem;
+  font-weight: 950;
+}
+
+.dashboard-module-card h3 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: 2.1rem;
+  font-weight: 950;
+}
+
+.dashboard-module-card p {
+  margin: 4px 0;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+.dashboard-module-card small {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--lm-muted);
+  font-weight: 750;
+}
+
+.dashboard-deep-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr);
+  gap: 24px;
+}
+
+.dashboard-chart-console,
+.dashboard-focus-console,
+.dashboard-activity-console {
+  padding: 28px;
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.dashboard-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.dashboard-card-header h2 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: 1.5rem;
+  font-weight: 950;
+}
+
+.dashboard-card-header span {
+  padding: 9px 13px;
+  border-radius: 999px;
+  color: var(--lm-primary);
+  background: #eff6ff;
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
+.dashboard-chart-wrap {
+  width: 100%;
+  min-height: 310px;
+}
+
+.dashboard-focus-list {
+  display: grid;
+  gap: 14px;
+}
+
+.dashboard-focus-list div {
+  padding: 17px;
+  border-radius: 24px;
+  background: #f8fafc;
+  border: 1px solid var(--lm-border);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.dashboard-focus-list svg {
+  color: var(--lm-primary);
+}
+
+.dashboard-focus-list p {
+  margin: 0;
+  color: var(--lm-muted);
+  line-height: 1.65;
+  font-weight: 750;
+}
+
+.dashboard-activity-list {
+  display: grid;
+  gap: 12px;
+}
+
+.dashboard-activity-item {
+  padding: 16px;
+  border-radius: 24px;
+  background: #f8fafc;
+  border: 1px solid var(--lm-border);
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.dashboard-activity-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 20px;
+  background: white;
+  color: var(--lm-primary);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+}
+
+.dashboard-activity-item p {
+  margin: 0;
+  color: var(--lm-muted);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.dashboard-activity-item h3 {
+  margin: 3px 0 0;
+  color: var(--lm-text);
+  font-size: 0.98rem;
+  font-weight: 950;
+}
+
+.dashboard-activity-item strong {
+  color: var(--lm-primary);
+  font-weight: 950;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-module-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dashboard-command-hero,
+  .dashboard-deep-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-module-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-command-hero,
+  .dashboard-chart-console,
+  .dashboard-focus-console,
+  .dashboard-activity-console {
+    padding: 22px;
+    border-radius: 30px;
+  }
+
+  .dashboard-card-header {
+    flex-direction: column;
+  }
+
+  .dashboard-activity-item {
+    grid-template-columns: 46px 1fr;
+  }
+
+  .dashboard-activity-item strong {
+    grid-column: 2;
+  }
+}

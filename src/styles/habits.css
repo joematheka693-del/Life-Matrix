@@ -1,0 +1,289 @@
+/* PHASE 7.0 — HABIT TRACKER SYSTEM */
+
+.premium-habits-page {
+  padding-bottom: 44px;
+}
+
+.habits-command-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 36px;
+  border-radius: 40px;
+  background: var(--lm-hero-gradient);
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(300px, 0.58fr);
+  gap: 30px;
+  align-items: stretch;
+  border: 1px solid var(--lm-border);
+  box-shadow: var(--lm-shadow-soft);
+}
+
+.habits-command-hero h1 {
+  margin: 0;
+  max-width: 880px;
+  color: var(--lm-text);
+  font-size: clamp(2.25rem, 5.4vw, 4.75rem);
+  font-weight: 950;
+  letter-spacing: -0.075em;
+  line-height: 0.94;
+}
+
+.habits-command-hero p {
+  max-width: 760px;
+  color: var(--lm-muted);
+  line-height: 1.78;
+  font-weight: 650;
+}
+
+.habits-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.habits-rank-card {
+  padding: 28px;
+  border-radius: 34px;
+  background: var(--lm-terminal-gradient);
+  color: white;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  min-height: 290px;
+  box-shadow: 0 32px 70px color-mix(in srgb, var(--lm-primary) 28%, transparent);
+}
+
+.habits-rank-card svg {
+  width: 74px;
+  height: 74px;
+  padding: 16px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.habits-rank-card span,
+.habits-rank-card p {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.habits-rank-card strong {
+  color: white;
+  font-size: 3.1rem;
+  line-height: 1;
+  font-weight: 950;
+}
+
+.habits-mini-progress {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.habits-mini-progress div {
+  height: 100%;
+  border-radius: inherit;
+  background: white;
+}
+
+.habit-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.habit-metric-card {
+  padding: 23px;
+  border-radius: 32px;
+  background: var(--lm-surface);
+  border: 1px solid var(--lm-border);
+  box-shadow: var(--lm-shadow-soft);
+}
+
+.habit-metric-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 21px;
+  background: color-mix(in srgb, var(--lm-primary) 12%, transparent);
+  color: var(--lm-primary);
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+
+.habit-metric-card p {
+  margin: 0;
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.habit-metric-card h3 {
+  margin: 5px 0;
+  color: var(--lm-text);
+  font-size: 2rem;
+  font-weight: 950;
+}
+
+.habit-metric-card span {
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.habit-console-form {
+  padding: 28px;
+  border-radius: 36px;
+  background: var(--lm-surface);
+}
+
+.habit-premium-form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.6fr) auto;
+  gap: 16px;
+  align-items: end;
+}
+
+.habit-premium-form-grid label {
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 950;
+}
+
+.habit-premium-form-grid input,
+.habit-premium-form-grid select {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 8px;
+  padding: 0 16px;
+  border-radius: 18px;
+  border: 1px solid var(--lm-border);
+  background: var(--lm-surface-soft);
+  color: var(--lm-text);
+  outline: none;
+  font-weight: 850;
+}
+
+.habit-grid-premium {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.habit-card-premium {
+  padding: 23px;
+  border-radius: 32px;
+  background: var(--lm-surface);
+  border: 1px solid var(--lm-border);
+  box-shadow: var(--lm-shadow-soft);
+}
+
+.habit-card-premium.completed {
+  border-color: rgba(22, 163, 74, 0.26);
+  background:
+    radial-gradient(circle at top right, rgba(22, 163, 74, 0.09), transparent 34%),
+    var(--lm-surface);
+}
+
+.habit-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.habit-card-top p {
+  margin: 0;
+  color: var(--lm-primary);
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
+.habit-card-top h3 {
+  margin: 5px 0 0;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+.habit-streak-pill {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #f97316;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
+.habit-status-box {
+  padding: 16px;
+  border-radius: 22px;
+  background: var(--lm-surface-soft);
+  border: 1px solid var(--lm-border);
+  color: var(--lm-muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+}
+
+.habit-status-box svg {
+  color: var(--lm-primary);
+}
+
+.habit-card-actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.habit-delete-btn {
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: #fff1f2;
+  color: #ef4444;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 900;
+}
+
+@media (max-width: 1100px) {
+  .habits-command-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .habit-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .habit-premium-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .habit-premium-form-grid .btn-life {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 760px) {
+  .habits-command-hero,
+  .habit-console-form {
+    padding: 22px;
+    border-radius: 30px;
+  }
+
+  .habit-stat-grid,
+  .habit-grid-premium {
+    grid-template-columns: 1fr;
+  }
+}

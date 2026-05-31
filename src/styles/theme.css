@@ -1,0 +1,241 @@
+/* PHASE 6.4 — REAL THEME ENGINE
+   This file changes global CSS variables based on Settings theme.
+*/
+
+:root {
+  color-scheme: light;
+}
+
+:root[data-life-theme='light-matrix'] {
+  --lm-primary: #3b82f6;
+  --lm-secondary: #7c3aed;
+  --lm-accent: #06b6d4;
+  --lm-bg: #f4f7fb;
+  --lm-surface: #ffffff;
+  --lm-surface-soft: #f8fafc;
+  --lm-text: #0f172a;
+  --lm-muted: #64748b;
+  --lm-border: rgba(148, 163, 184, 0.24);
+  --lm-shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.075);
+  --lm-hero-gradient:
+    radial-gradient(circle at 12% 14%, rgba(59, 130, 246, 0.22), transparent 30%),
+    radial-gradient(circle at 90% 18%, rgba(124, 58, 237, 0.16), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.95));
+  --lm-terminal-gradient:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.62), transparent 42%),
+    linear-gradient(145deg, #2563eb, #4f46e5 48%, #7c3aed);
+}
+
+:root[data-life-theme='soft-blue'] {
+  --lm-primary: #0284c7;
+  --lm-secondary: #38bdf8;
+  --lm-accent: #0ea5e9;
+  --lm-bg: #eff6ff;
+  --lm-surface: #ffffff;
+  --lm-surface-soft: #f0f9ff;
+  --lm-text: #0f172a;
+  --lm-muted: #64748b;
+  --lm-border: rgba(14, 165, 233, 0.2);
+  --lm-shadow-soft: 0 18px 45px rgba(14, 165, 233, 0.095);
+  --lm-hero-gradient:
+    radial-gradient(circle at 12% 14%, rgba(14, 165, 233, 0.22), transparent 30%),
+    radial-gradient(circle at 90% 18%, rgba(56, 189, 248, 0.18), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 249, 255, 0.96));
+  --lm-terminal-gradient:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.62), transparent 42%),
+    linear-gradient(145deg, #0284c7, #0ea5e9 48%, #38bdf8);
+}
+
+:root[data-life-theme='anime-clean'] {
+  --lm-primary: #ec4899;
+  --lm-secondary: #8b5cf6;
+  --lm-accent: #f97316;
+  --lm-bg: #fff7fb;
+  --lm-surface: #ffffff;
+  --lm-surface-soft: #fdf2f8;
+  --lm-text: #18181b;
+  --lm-muted: #71717a;
+  --lm-border: rgba(236, 72, 153, 0.18);
+  --lm-shadow-soft: 0 18px 45px rgba(236, 72, 153, 0.095);
+  --lm-hero-gradient:
+    radial-gradient(circle at 12% 14%, rgba(236, 72, 153, 0.2), transparent 30%),
+    radial-gradient(circle at 90% 18%, rgba(139, 92, 246, 0.18), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(253, 242, 248, 0.96));
+  --lm-terminal-gradient:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.62), transparent 42%),
+    linear-gradient(145deg, #ec4899, #8b5cf6 52%, #f97316);
+}
+
+:root[data-life-theme='focus-mode'] {
+  --lm-primary: #334155;
+  --lm-secondary: #0f766e;
+  --lm-accent: #14b8a6;
+  --lm-bg: #f8fafc;
+  --lm-surface: #ffffff;
+  --lm-surface-soft: #f1f5f9;
+  --lm-text: #0f172a;
+  --lm-muted: #64748b;
+  --lm-border: rgba(51, 65, 85, 0.18);
+  --lm-shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.07);
+  --lm-hero-gradient:
+    radial-gradient(circle at 12% 14%, rgba(51, 65, 85, 0.14), transparent 30%),
+    radial-gradient(circle at 90% 18%, rgba(20, 184, 166, 0.16), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.96));
+  --lm-terminal-gradient:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.5), transparent 42%),
+    linear-gradient(145deg, #334155, #0f766e 55%, #14b8a6);
+}
+
+:root[data-life-theme='shadow-system'] {
+  color-scheme: dark;
+
+  --lm-primary: #38bdf8;
+  --lm-secondary: #6366f1;
+  --lm-accent: #22d3ee;
+  --lm-bg: #050816;
+  --lm-surface: #0f172a;
+  --lm-surface-soft: #111827;
+  --lm-text: #e5f0ff;
+  --lm-muted: #94a3b8;
+  --lm-border: rgba(148, 163, 184, 0.2);
+  --lm-shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.28);
+  --lm-hero-gradient:
+    radial-gradient(circle at 12% 14%, rgba(56, 189, 248, 0.18), transparent 30%),
+    radial-gradient(circle at 90% 18%, rgba(99, 102, 241, 0.18), transparent 28%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.98));
+  --lm-terminal-gradient:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.12), transparent 42%),
+    linear-gradient(145deg, #0f172a, #1e3a8a 48%, #312e81);
+}
+
+/* Global application background */
+body {
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--lm-primary) 10%, transparent), transparent 28%),
+    var(--lm-bg) !important;
+  color: var(--lm-text);
+}
+
+/* Make common glass panels obey themes */
+.glass-card {
+  background: color-mix(in srgb, var(--lm-surface) 92%, transparent) !important;
+  border-color: var(--lm-border) !important;
+  box-shadow: var(--lm-shadow-soft) !important;
+}
+
+/* Hero sections from newer phases */
+.home-command-hero,
+.profile-command-hero,
+.settings-command-hero,
+.dashboard-command-hero,
+.analytics-command-hero,
+.workout-command-hero,
+.studying-command-hero,
+.goals-command-hero,
+.premium-reading-hero,
+.premium-watch-hero {
+  background: var(--lm-hero-gradient) !important;
+}
+
+/* Terminal/rank/score panels */
+.home-preview-console,
+.profile-rank-terminal,
+.settings-security-card,
+.dashboard-rank-terminal,
+.analytics-score-terminal,
+.workout-rank-card,
+.studying-rank-card,
+.goals-rank-card,
+.profile-rank-card,
+.dashboard-rank-panel,
+.premium-analytics-score-card,
+.premium-settings-hero-card,
+.premium-profile-hero-card {
+  background: var(--lm-terminal-gradient) !important;
+}
+
+/* Surface unification */
+.home-module-card,
+.home-stat-strip article,
+.profile-metric-card,
+.goal-metric-card,
+.workout-metric-card,
+.study-metric-card,
+.analytics-metric-card,
+.dashboard-module-card,
+.workout-session-card,
+.study-path-card,
+.goal-mission-card,
+.premium-badge-card,
+.premium-dashboard-stat-card,
+.analytics-insight-card,
+.premium-chart-card,
+.premium-settings-card,
+.settings-console-card,
+.settings-save-console {
+  background: var(--lm-surface) !important;
+  border-color: var(--lm-border) !important;
+  color: var(--lm-text);
+}
+
+/* Muted internal panels */
+.home-step-item,
+.dashboard-focus-list div,
+.study-focus-list div,
+.notification-summary div,
+.notification-item,
+.quick-add-form-title,
+.global-search-result,
+.milestone-item,
+.achievement-badge-preview {
+  background: var(--lm-surface-soft) !important;
+  border-color: var(--lm-border) !important;
+}
+
+/* Dark theme-specific readability */
+:root[data-life-theme='shadow-system'] input,
+:root[data-life-theme='shadow-system'] select,
+:root[data-life-theme='shadow-system'] textarea {
+  background: #111827 !important;
+  color: var(--lm-text) !important;
+  border-color: var(--lm-border) !important;
+}
+
+:root[data-life-theme='shadow-system'] .life-navbar,
+:root[data-life-theme='shadow-system'] .premium-navbar,
+:root[data-life-theme='shadow-system'] .life-sidebar,
+:root[data-life-theme='shadow-system'] .premium-sidebar {
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 28%),
+    linear-gradient(180deg, #0f172a 0%, #020617 100%) !important;
+  border-color: var(--lm-border) !important;
+}
+
+:root[data-life-theme='shadow-system'] .navbar-search,
+:root[data-life-theme='shadow-system'] .premium-navbar-search,
+:root[data-life-theme='shadow-system'] .profile-btn,
+:root[data-life-theme='shadow-system'] .premium-profile-btn,
+:root[data-life-theme='shadow-system'] .navbar-icon-btn,
+:root[data-life-theme='shadow-system'] .premium-icon-btn,
+:root[data-life-theme='shadow-system'] .navbar-menu-btn,
+:root[data-life-theme='shadow-system'] .premium-menu-btn,
+:root[data-life-theme='shadow-system'] .dropdown-menu-panel,
+:root[data-life-theme='shadow-system'] .premium-dropdown-panel {
+  background: #0f172a !important;
+  color: var(--lm-text) !important;
+  border-color: var(--lm-border) !important;
+}
+
+:root[data-life-theme='shadow-system'] .page-kicker,
+:root[data-life-theme='shadow-system'] .navbar-brand-chip,
+:root[data-life-theme='shadow-system'] .dashboard-card-header span {
+  background: rgba(56, 189, 248, 0.12) !important;
+  color: var(--lm-primary) !important;
+  border-color: rgba(56, 189, 248, 0.2) !important;
+}
+
+:root[data-life-theme='shadow-system'] .btn-soft-life {
+  background: rgba(56, 189, 248, 0.1) !important;
+  color: var(--lm-primary) !important;
+  border-color: rgba(56, 189, 248, 0.2) !important;
+}

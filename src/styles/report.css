@@ -1,0 +1,144 @@
+/* PHASE 6.8 — MATRIX REPORT ENGINE */
+
+.matrix-report-section {
+  display: grid;
+  gap: 24px;
+}
+
+.matrix-report-hero {
+  padding: 28px;
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--lm-primary) 16%, transparent), transparent 34%),
+    var(--lm-surface);
+  border: 1px solid var(--lm-border);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 24px;
+  align-items: center;
+}
+
+.matrix-report-hero h2 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  font-weight: 950;
+  letter-spacing: -0.05em;
+}
+
+.matrix-report-hero p {
+  max-width: 760px;
+  color: var(--lm-muted);
+  line-height: 1.7;
+  margin: 8px 0 0;
+}
+
+.matrix-report-score {
+  min-height: 180px;
+  border-radius: 32px;
+  background: var(--lm-terminal-gradient);
+  color: white;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  box-shadow: 0 24px 54px color-mix(in srgb, var(--lm-primary) 24%, transparent);
+}
+
+.matrix-report-score svg {
+  width: 60px;
+  height: 60px;
+  padding: 13px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.matrix-report-score span {
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 850;
+}
+
+.matrix-report-score strong {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.matrix-report-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.matrix-report-card,
+.matrix-report-preview {
+  padding: 26px;
+  border-radius: 34px;
+  background: var(--lm-surface);
+  border: 1px solid var(--lm-border);
+}
+
+.matrix-report-card-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
+  color: white;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 18px 38px color-mix(in srgb, var(--lm-primary) 24%, transparent);
+  margin-bottom: 18px;
+}
+
+.matrix-report-card h3 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: 1.2rem;
+  font-weight: 950;
+}
+
+.matrix-report-card p {
+  min-height: 72px;
+  color: var(--lm-muted);
+  line-height: 1.65;
+  margin: 8px 0 18px;
+}
+
+.matrix-report-preview pre {
+  max-height: 460px;
+  overflow: auto;
+  padding: 18px;
+  border-radius: 24px;
+  background: var(--lm-surface-soft);
+  border: 1px solid var(--lm-border);
+  color: var(--lm-text);
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 1000px) {
+  .matrix-report-hero,
+  .matrix-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .matrix-report-score {
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 640px) {
+  .matrix-report-hero,
+  .matrix-report-card,
+  .matrix-report-preview {
+    padding: 22px;
+    border-radius: 30px;
+  }
+
+  .matrix-report-card .btn-life {
+    width: 100%;
+    justify-content: center;
+  }
+}

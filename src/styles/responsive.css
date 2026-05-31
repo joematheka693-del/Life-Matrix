@@ -1,0 +1,406 @@
+@media (max-width: 1100px) {
+  .sidebar-open .life-main,
+  .sidebar-closed .life-main {
+    padding-left: 0;
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    display: block;
+    border: none;
+    background: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(2px);
+  }
+
+  .dashboard-grid,
+  .dashboard-hero,
+  .workout-hero,
+  .workout-bottom-grid,
+  .reading-hero,
+  .studying-hero,
+  .watchlist-hero,
+  .goals-hero,
+  .goals-bottom-grid,
+  .profile-hero,
+  .profile-main-grid,
+  .profile-xp-card,
+  .analytics-hero,
+  .analytics-chart-grid,
+  .analytics-bottom-grid,
+  .settings-hero,
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-settings-card {
+    grid-column: auto;
+  }
+
+  .card-grid,
+  .home-feature-grid,
+  .module-grid,
+  .workout-stat-grid,
+  .workout-plan-grid,
+  .reading-stat-grid,
+  .reading-list-grid,
+  .study-stat-grid,
+  .course-grid,
+  .watch-stat-grid,
+  .watchlist-grid,
+  .goal-stat-grid,
+  .goal-grid,
+  .profile-stat-grid,
+  .badge-grid,
+  .analytics-insight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .goal-form-grid,
+  .workout-form-grid,
+  .matrix-form-grid.five,
+  .watch-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-hero,
+  .how-it-works {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero-preview {
+    min-height: 330px;
+  }
+
+  .main-preview-card {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  .navbar-search {
+    max-width: none;
+  }
+
+  .profile-info {
+    display: none;
+  }
+
+  .watch-toolbar,
+  .premium-reading-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .watch-filter-group,
+  .premium-filter-group {
+    flex-wrap: wrap;
+  }
+
+  .premium-reading-cover-row,
+  .reading-cover-upload-panel {
+    grid-template-columns: 180px 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .premium-reading-grid,
+  .premium-reading-grid.compact,
+  .premium-watch-grid,
+  .premium-watch-grid.compact {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-reading-cover-row,
+  .premium-cover-row,
+  .reading-cover-upload-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-cover-preview,
+  .reading-cover-preview {
+    max-width: 240px;
+  }
+
+  .premium-reading-grid-list,
+  .premium-watch-grid-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .life-content {
+    padding: 18px;
+  }
+
+  .card-grid,
+  .home-feature-grid,
+  .module-grid,
+  .workout-stat-grid,
+  .workout-plan-grid,
+  .reading-stat-grid,
+  .reading-list-grid,
+  .study-stat-grid,
+  .course-grid,
+  .watch-stat-grid,
+  .watchlist-grid,
+  .goal-stat-grid,
+  .goal-grid,
+  .profile-stat-grid,
+  .badge-grid,
+  .profile-summary-grid,
+  .xp-rules-grid,
+  .analytics-insight-grid,
+  .settings-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .goal-form-grid,
+  .workout-form-grid,
+  .matrix-form-grid.five,
+  .watch-form-grid,
+  .goal-actions,
+  .workout-actions,
+  .matrix-item-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero,
+  .workout-hero,
+  .reading-hero,
+  .studying-hero,
+  .watchlist-hero,
+  .goals-hero,
+  .profile-hero,
+  .analytics-hero,
+  .settings-hero,
+  .premium-reading-hero,
+  .premium-watch-hero,
+  .premium-profile-hero,
+  .premium-settings-hero,
+  .premium-dashboard-hero,
+  .premium-analytics-hero,
+  .profile-command-hero,
+  .settings-command-hero,
+  .dashboard-command-hero,
+  .analytics-command-hero {
+    padding: 22px;
+    border-radius: 30px;
+  }
+
+  .life-sidebar {
+    width: min(86vw, 300px);
+  }
+
+  .section-heading,
+  .goal-form-header,
+  .workout-form-header,
+  .matrix-form-header,
+  .settings-save-card,
+  .settings-toggle-row,
+  .premium-form-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .settings-save-card .btn-life {
+    width: 100%;
+  }
+
+  .home-hero-preview {
+    min-height: auto;
+    display: grid;
+    gap: 14px;
+  }
+
+  .preview-card,
+  .main-preview-card,
+  .mini-preview-card {
+    position: static;
+    width: 100%;
+    min-height: auto;
+    transform: none;
+  }
+
+  .workout-stat-card,
+  .reading-stat-card,
+  .study-stat-card,
+  .watch-stat-card,
+  .goal-stat-card,
+  .profile-stat-card,
+  .analytics-insight-card {
+    align-items: flex-start;
+  }
+
+  .workout-hero-card,
+  .reading-hero-card,
+  .studying-hero-card,
+  .watchlist-hero-card,
+  .goals-hero-card,
+  .profile-rank-card,
+  .analytics-score-card,
+  .settings-hero-card {
+    min-height: auto;
+  }
+
+  .analytics-recommendation-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .watch-filter-group,
+  .watch-filter-group select,
+  .premium-filter-group,
+  .premium-filter-group select {
+    width: 100%;
+  }
+
+  .watch-filter-group,
+  .premium-filter-group {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .premium-search-box,
+  .watch-search-box {
+    width: 100%;
+  }
+
+  .watch-poster-box {
+    height: 220px;
+  }
+
+  .poster-preview-box {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .premium-reading-form-card,
+  .premium-watch-form-card {
+    padding: 22px;
+  }
+
+  .reading-form-section,
+  .watch-form-section {
+    padding: 18px;
+  }
+
+  .reading-section-title,
+  .watch-section-title {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .premium-reading-cover-row,
+  .premium-cover-row,
+  .reading-cover-upload-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-cover-preview,
+  .reading-cover-preview {
+    width: 100%;
+    max-width: 230px;
+    min-height: 300px;
+  }
+
+  .premium-cover-fields,
+  .reading-cover-controls {
+    width: 100%;
+  }
+
+  .reading-upload-actions {
+    flex-direction: column;
+  }
+
+  .reading-upload-btn,
+  .reading-remove-cover-btn {
+    width: 100%;
+  }
+
+  .premium-reading-card,
+  .premium-watch-card {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-reading-cover,
+  .premium-watch-poster {
+    min-height: 320px;
+  }
+
+  .premium-delete-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .life-content {
+    padding: 14px;
+  }
+
+  .home-hero,
+  .workout-hero,
+  .reading-hero,
+  .studying-hero,
+  .watchlist-hero,
+  .goals-hero,
+  .profile-hero,
+  .analytics-hero,
+  .settings-hero,
+  .premium-reading-hero,
+  .premium-watch-hero,
+  .premium-profile-hero,
+  .premium-settings-hero,
+  .premium-dashboard-hero,
+  .premium-analytics-hero,
+  .profile-command-hero,
+  .settings-command-hero,
+  .dashboard-command-hero,
+  .analytics-command-hero {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .home-hero h1,
+  .workout-hero h1,
+  .reading-hero h1,
+  .studying-hero h1,
+  .watchlist-hero h1,
+  .goals-hero h1,
+  .profile-hero h1,
+  .analytics-hero h1,
+  .settings-hero h1,
+  .premium-reading-hero h1,
+  .premium-watch-hero h1,
+  .premium-profile-hero h1,
+  .premium-settings-hero h1,
+  .premium-dashboard-hero h1,
+  .premium-analytics-hero h1,
+  .profile-command-hero h1,
+  .settings-command-hero h1,
+  .dashboard-command-hero h1,
+  .analytics-command-hero h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .premium-reading-form-card,
+  .premium-watch-form-card,
+  .premium-reading-toolbar,
+  .watch-toolbar {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .premium-reading-cover,
+  .premium-watch-poster {
+    min-height: 260px;
+  }
+
+  .premium-cover-preview,
+  .reading-cover-preview {
+    max-width: 100%;
+    min-height: 260px;
+  }
+}

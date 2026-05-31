@@ -1,0 +1,263 @@
+/* PHASE 5.8 — PREMIUM ANALYTICS REDESIGN */
+
+.premium-analytics-page {
+  padding-bottom: 44px;
+}
+
+.analytics-command-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 36px;
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(59, 130, 246, 0.22), transparent 30%),
+    radial-gradient(circle at 90% 18%, rgba(124, 58, 237, 0.16), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.95));
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(300px, 0.58fr);
+  gap: 30px;
+  align-items: stretch;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);
+}
+
+.analytics-command-hero h1 {
+  margin: 0;
+  max-width: 870px;
+  color: var(--lm-text);
+  font-size: clamp(2.25rem, 5.4vw, 4.75rem);
+  font-weight: 950;
+  letter-spacing: -0.075em;
+  line-height: 0.94;
+}
+
+.analytics-command-hero p {
+  max-width: 760px;
+  color: var(--lm-muted);
+  line-height: 1.78;
+  font-weight: 650;
+}
+
+.analytics-score-terminal {
+  padding: 28px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.62), transparent 42%),
+    linear-gradient(145deg, #2563eb, #4f46e5 48%, #7c3aed);
+  color: white;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  min-height: 290px;
+  box-shadow: 0 32px 70px rgba(59, 130, 246, 0.32);
+}
+
+.analytics-score-terminal svg {
+  width: 74px;
+  height: 74px;
+  padding: 16px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.analytics-score-terminal span,
+.analytics-score-terminal p {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.analytics-score-terminal strong {
+  color: white;
+  font-size: 3.35rem;
+  line-height: 1;
+  font-weight: 950;
+}
+
+.analytics-metric-card {
+  position: relative;
+  overflow: hidden;
+  padding: 23px;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 34%),
+    white;
+  border: 1px solid var(--lm-border);
+  box-shadow: var(--lm-shadow-soft);
+}
+
+.analytics-metric-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 21px;
+  background: linear-gradient(135deg, #eff6ff, #eef2ff);
+  color: var(--lm-primary);
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+
+.analytics-metric-card p {
+  margin: 0;
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.analytics-metric-card h3 {
+  margin: 5px 0;
+  color: var(--lm-text);
+  font-size: 2.08rem;
+  font-weight: 950;
+}
+
+.analytics-metric-card span {
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.analytics-deep-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+}
+
+.analytics-chart-console,
+.analytics-recommendation-console,
+.analytics-module-console {
+  padding: 28px;
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.analytics-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.analytics-card-header h2,
+.analytics-module-console h2 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: 1.5rem;
+  font-weight: 950;
+}
+
+.analytics-card-header svg {
+  color: var(--lm-primary);
+}
+
+.analytics-chart-wrap {
+  width: 100%;
+  min-height: 340px;
+}
+
+.analytics-bottom-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(320px, 0.78fr);
+  gap: 24px;
+}
+
+.analytics-recommendation-list {
+  display: grid;
+  gap: 14px;
+}
+
+.analytics-recommendation-item {
+  padding: 17px;
+  border-radius: 24px;
+  background: #f8fafc;
+  border: 1px solid var(--lm-border);
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.analytics-recommendation-item > div:first-child {
+  width: 48px;
+  height: 48px;
+  border-radius: 19px;
+  background: white;
+  color: var(--lm-primary);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+}
+
+.analytics-recommendation-item h3 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: 1rem;
+  font-weight: 950;
+}
+
+.analytics-recommendation-item p {
+  margin: 5px 0 0;
+  color: var(--lm-muted);
+  line-height: 1.65;
+  font-size: 0.9rem;
+}
+
+.analytics-module-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.analytics-module-list div {
+  padding: 16px;
+  border-radius: 22px;
+  background: #f8fafc;
+  border: 1px solid var(--lm-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.analytics-module-list span {
+  color: var(--lm-text);
+  font-weight: 950;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.analytics-module-list svg {
+  color: var(--lm-primary);
+}
+
+.analytics-module-list strong {
+  color: var(--lm-primary);
+  font-size: 1.15rem;
+  font-weight: 950;
+}
+
+@media (max-width: 1100px) {
+  .analytics-command-hero,
+  .analytics-deep-grid,
+  .analytics-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-score-terminal {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .analytics-command-hero,
+  .analytics-chart-console,
+  .analytics-recommendation-console,
+  .analytics-module-console {
+    padding: 22px;
+    border-radius: 30px;
+  }
+
+  .analytics-card-header {
+    flex-direction: column;
+  }
+}
