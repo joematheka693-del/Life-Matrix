@@ -1,0 +1,227 @@
+/* PHASE 9.6 — AUTO CLOUD SYNC ENGINE */
+
+.auto-sync-panel {
+  display: grid;
+  gap: 24px;
+}
+
+.auto-sync-hero {
+  padding: 28px;
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--lm-primary) 16%, transparent), transparent 34%),
+    var(--lm-surface);
+  border: 1px solid var(--lm-border);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 24px;
+  align-items: center;
+}
+
+.auto-sync-hero h2 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  font-weight: 950;
+  letter-spacing: -0.05em;
+}
+
+.auto-sync-hero p {
+  max-width: 760px;
+  color: var(--lm-muted);
+  line-height: 1.7;
+  margin: 8px 0 0;
+}
+
+.auto-sync-status {
+  min-height: 170px;
+  border-radius: 32px;
+  color: white;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  box-shadow: 0 24px 54px color-mix(in srgb, var(--lm-primary) 24%, transparent);
+}
+
+.auto-sync-status.ready {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+.auto-sync-status.blocked {
+  background: linear-gradient(135deg, #64748b, #334155);
+}
+
+.auto-sync-status svg {
+  width: 58px;
+  height: 58px;
+  padding: 12px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.auto-sync-status span {
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 850;
+}
+
+.auto-sync-status strong {
+  color: white;
+  font-size: 1.45rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.auto-sync-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.auto-sync-card {
+  padding: 26px;
+  border-radius: 34px;
+  background: var(--lm-surface);
+  border: 1px solid var(--lm-border);
+}
+
+.auto-sync-card > svg {
+  width: 58px;
+  height: 58px;
+  padding: 15px;
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--lm-primary) 12%, transparent);
+  color: var(--lm-primary);
+  margin-bottom: 16px;
+}
+
+.auto-sync-card h3 {
+  margin: 0;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+.auto-sync-card p {
+  color: var(--lm-muted);
+  line-height: 1.65;
+}
+
+.auto-sync-card button:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.auto-sync-meta {
+  padding: 14px;
+  border-radius: 20px;
+  background: var(--lm-surface-soft);
+  border: 1px solid var(--lm-border);
+  margin-bottom: 10px;
+}
+
+.auto-sync-meta span {
+  display: block;
+  color: var(--lm-muted);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.auto-sync-meta strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+.auto-sync-toggle {
+  padding: 15px;
+  border-radius: 22px;
+  background: var(--lm-surface-soft);
+  border: 1px solid var(--lm-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.auto-sync-toggle strong {
+  display: block;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+.auto-sync-toggle span {
+  display: block;
+  margin-top: 4px;
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  font-weight: 750;
+}
+
+.auto-sync-toggle input {
+  width: 42px;
+  height: 24px;
+  accent-color: var(--lm-primary);
+}
+
+.auto-sync-field {
+  display: block;
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 950;
+}
+
+.auto-sync-field input {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 8px;
+  padding: 0 15px;
+  border-radius: 18px;
+  border: 1px solid var(--lm-border);
+  background: var(--lm-surface-soft);
+  color: var(--lm-text);
+  outline: none;
+  font-weight: 850;
+}
+
+.auto-sync-note {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--lm-primary) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--lm-primary) 14%, transparent);
+  color: var(--lm-primary);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 900;
+}
+
+@media (max-width: 1100px) {
+  .auto-sync-hero,
+  .auto-sync-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .auto-sync-status {
+    min-height: 145px;
+  }
+}
+
+@media (max-width: 640px) {
+  .auto-sync-hero,
+  .auto-sync-card {
+    padding: 22px;
+    border-radius: 30px;
+  }
+
+  .auto-sync-card .btn-life {
+    width: 100%;
+  }
+
+  .auto-sync-toggle {
+    align-items: flex-start;
+  }
+}

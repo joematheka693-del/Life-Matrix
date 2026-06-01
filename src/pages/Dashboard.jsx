@@ -26,6 +26,7 @@ import {
 import DailyFocusBoard from '../components/DailyFocusBoard.jsx'
 import FocusTimer from '../components/FocusTimer.jsx'
 import MatrixLevelCard from '../components/MatrixLevelCard.jsx'
+import ReminderCenter from '../components/ReminderCenter.jsx'
 import { useLifeData } from '../context/LifeDataContext'
 import { getMatrixStats } from '../utils/matrixStats.js'
 
@@ -117,7 +118,7 @@ function Dashboard() {
           <h1>Welcome back, {username}.</h1>
           <p>
             Dashboard now includes Daily Focus, XP calculation, smart progress,
-            and a real Pomodoro-style Focus Timer.
+            Pomodoro timer, and a real Reminder Engine.
           </p>
 
           <div className="dashboard-hero-actions">
@@ -147,6 +148,8 @@ function Dashboard() {
           </div>
         </div>
       </div>
+
+      <ReminderCenter />
 
       <DailyFocusBoard />
 

@@ -1,0 +1,85 @@
+/* PHASE 9.1 — QA TESTING LAB */
+
+.testing-page { padding-bottom: 44px; }
+
+.testing-command-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.testing-command-grid article,
+.testing-item {
+  padding: 22px;
+  border-radius: 30px;
+  background: var(--lm-surface);
+  border: 1px solid var(--lm-border);
+  box-shadow: var(--lm-shadow-soft);
+}
+
+.testing-command-grid svg {
+  width: 52px;
+  height: 52px;
+  padding: 14px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--lm-primary) 12%, transparent);
+  color: var(--lm-primary);
+}
+
+.testing-command-grid p {
+  margin: 14px 0 8px;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+.testing-command-grid pre {
+  margin: 0;
+  padding: 14px;
+  border-radius: 18px;
+  background: var(--lm-surface-soft);
+  border: 1px solid var(--lm-border);
+  color: var(--lm-primary);
+  font-weight: 950;
+}
+
+.testing-list {
+  display: grid;
+  gap: 12px;
+}
+
+.testing-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.testing-item.done {
+  border-color: rgba(22, 163, 74, 0.28);
+  background:
+    radial-gradient(circle at top right, rgba(22, 163, 74, 0.1), transparent 34%),
+    var(--lm-surface);
+}
+
+.testing-item span {
+  color: var(--lm-primary);
+  font-size: .78rem;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.testing-item h3 {
+  margin: 5px 0 0;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+@media (max-width: 900px) {
+  .testing-command-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .testing-item { grid-template-columns: 1fr; }
+  .testing-item .btn-life { width: 100%; }
+}

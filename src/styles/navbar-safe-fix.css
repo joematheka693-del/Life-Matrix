@@ -1,0 +1,34 @@
+/* PHASE 9.8.1 — SAFE NAVBAR FIX */
+
+.navbar-search-real {
+  cursor: text !important;
+}
+
+.navbar-search-real input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--lm-text);
+  font-weight: 850;
+}
+
+.navbar-search-real input::placeholder {
+  color: var(--lm-muted);
+}
+
+.navbar-notification-wrap {
+  position: relative;
+}
+
+.navbar-mini-menu {
+  position: absolute !important;
+  top: calc(100% + 12px) !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  width: 290px !important;
+}
+
+.notification-mini-menu .navbar-avatar.large {
+  background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary)) !important;
+}

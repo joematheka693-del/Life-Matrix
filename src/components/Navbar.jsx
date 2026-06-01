@@ -1,157 +1,221 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   Bell,
   ChevronDown,
   LogOut,
   Menu,
-  Plus,
   Search,
   Settings,
-  Sparkles,
+  ShieldCheck,
   User,
 } from 'lucide-react'
 
-import { useLifeData } from '../context/LifeDataContext'
-import GlobalSearchModal from './GlobalSearchModal.jsx'
-import NotificationPanel from './NotificationPanel.jsx'
-import QuickAddModal from './QuickAddModal.jsx'
+import { useAuth } from '../context/AuthContext.jsx'
+import { useLifeData } from '../context/LifeDataContext.jsx'
 
 function Navbar({ toggleSidebar }) {
+  const navigate = useNavigate()
+  const { authUser, isAuthenticated, logout } = useAuth()
   const { lifeData } = useLifeData()
-  const [quickAddOpen, setQuickAddOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
-  const [notificationsOpen, setNotificationsOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
 
-  const user = lifeData.user || {}
-  const goals = lifeData.goals || []
-  const reading = lifeData.reading || []
-  const watchlist = lifeData.watchlist || []
+  const [profileOpen, setProfileOpen] = useState(false)
+  const [notificationOpen, setNotificationOpen] = useState(false)
+  const [searchText, setSearchText] = useState('')
+  const profileRef = useRef(null)
+  const notificationRef = useRef(null)
 
-  const username = user.username || user.name || 'User'
-  const rank = user.rank || 'Matrix Rank'
-  const avatarUrl = user.avatarUrl || ''
-  const level = user.level || 1
+  const lifeUser = lifeData.user || {}
+  const activeUser = authUser || lifeUser || {}
 
-  const alertCount =
-    goals.filter((goal) => Number(goal.progress) < 50).length +
-    reading.filter((item) => Number(item.progress) >= 80 && Number(item.progress) < 100).length +
-    watchlist.filter((item) => Number(item.progress) >= 80 && Number(item.progress) < 100).length
+  const username =
+    activeUser.username ||
+    activeUser.name ||
+    activeUser.full_name ||
+    'User'
+
+  const email = activeUser.email || 'Signed in'
+  const rank = lifeUser.rank || 'Rank C'
+  const avatarUrl = lifeUser.avatarUrl || activeUser.avatarUrl || ''
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
-      const isSearchShortcut =
-        (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k'
-
-      if (isSearchShortcut) {
-        event.preventDefault()
-        setSearchOpen(true)
+    function handleClickOutside(event) {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setProfileOpen(false)
       }
 
-      if (event.key === 'Escape') {
-        setSearchOpen(false)
-        setQuickAddOpen(false)
-        setNotificationsOpen(false)
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setNotificationOpen(false)
       }
     }
 
-    window.addEventListener('keydown', handleKeyDown)
+    function handleEscape(event) {
+      if (event.key === 'Escape') {
+        setProfileOpen(false)
+        setNotificationOpen(false)
+      }
+    }
 
-    return () => window.removeEventListener('keydown', handleKeyDown)
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscape)
+    }
   }, [])
 
-  const openSearch = () => {
-    setSearchOpen(true)
+  const handleLogout = () => {
+    logout()
+    setProfileOpen(false)
+    navigate('/auth', { replace: true, state: { stay: true } })
+  }
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault()
+
+    const query = searchText.trim().toLowerCase()
+
+    if (!query) {
+      return
+    }
+
+    const routeMap = [
+      { keywords: ['dashboard', 'home'], path: '/dashboard' },
+      { keywords: ['planner', 'calendar', 'schedule'], path: '/planner' },
+      { keywords: ['habit', 'habits'], path: '/habits' },
+      { keywords: ['goal', 'goals'], path: '/goals' },
+      { keywords: ['workout', 'workouts', 'fitness'], path: '/workouts' },
+      { keywords: ['watchlist', 'anime', 'movie', 'series'], path: '/watchlist' },
+      { keywords: ['reading', 'book', 'manhwa'], path: '/reading' },
+      { keywords: ['study', 'studying', 'school'], path: '/studying' },
+      { keywords: ['finance', 'money'], path: '/finance' },
+      { keywords: ['settings'], path: '/settings' },
+      { keywords: ['profile', 'user'], path: '/profile' },
+      { keywords: ['sync', 'backup', 'cloud'], path: '/sync' },
+    ]
+
+    const match = routeMap.find((item) =>
+      item.keywords.some((keyword) => query.includes(keyword))
+    )
+
+    if (match) {
+      navigate(match.path)
+      setSearchText('')
+    }
   }
 
   return (
-    <>
-      <header className="life-navbar premium-navbar">
-        <div className="premium-navbar-left">
-          <button
-            className="navbar-menu-btn premium-menu-btn"
-            onClick={toggleSidebar}
-            aria-label="Toggle sidebar"
-          >
-            <Menu size={21} />
-          </button>
-
-          <div className="navbar-left premium-navbar-title">
-            <div className="navbar-brand-chip">
-              <Sparkles size={16} />
-              <span>Life OS</span>
-            </div>
-
-            <div>
-              <p className="navbar-kicker">Welcome back, {username}</p>
-              <h2>Life Matrix</h2>
-            </div>
-          </div>
-        </div>
-
+    <header className="life-navbar premium-navbar">
+      <div className="navbar-left">
         <button
-          className="navbar-search premium-navbar-search navbar-search-button"
           type="button"
-          onClick={openSearch}
+          className="navbar-icon-btn"
+          onClick={toggleSidebar}
+          aria-label="Toggle sidebar"
         >
-          <Search size={18} />
-          <span className="navbar-search-placeholder">
-            {searchQuery || 'Search your matrix...'}
-          </span>
-          <span className="search-shortcut">Ctrl K</span>
+          <Menu size={21} />
         </button>
 
-        <div className="navbar-actions premium-navbar-actions">
+        <div className="navbar-title-block">
+          <span>Welcome back</span>
+          <strong>{username}</strong>
+        </div>
+      </div>
+
+      <form className="navbar-center" onSubmit={handleSearchSubmit}>
+        <label className="navbar-search-trigger navbar-search-real">
+          <Search size={18} />
+          <input
+            value={searchText}
+            onChange={(event) => setSearchText(event.target.value)}
+            placeholder="Search pages..."
+          />
+        </label>
+      </form>
+
+      <div className="navbar-right">
+        <div className="navbar-notification-wrap" ref={notificationRef}>
           <button
-            className="quick-add-btn premium-quick-add"
             type="button"
-            onClick={() => setQuickAddOpen(true)}
+            className="navbar-icon-btn"
+            onClick={(event) => {
+              event.preventDefault()
+              event.stopPropagation()
+              setNotificationOpen((prev) => !prev)
+              setProfileOpen(false)
+            }}
+            aria-label="Open notifications"
           >
-            <Plus size={18} />
-            <span>Quick Add</span>
+            <Bell size={20} />
           </button>
 
-          <div className="notification-wrapper">
-            <button
-              className="navbar-icon-btn premium-icon-btn"
-              type="button"
-              onClick={() => setNotificationsOpen((prev) => !prev)}
-              aria-label="Open notifications"
+          {notificationOpen && (
+            <div className="navbar-mini-menu click-dropdown-menu notification-mini-menu">
+              <div className="navbar-profile-menu-head">
+                <div className="navbar-avatar large">
+                  <Bell size={21} />
+                </div>
+
+                <div>
+                  <strong>Notifications</strong>
+                  <span>Reminder center is available on Dashboard.</span>
+                </div>
+              </div>
+
+              <Link to="/dashboard" onClick={() => setNotificationOpen(false)}>
+                <Bell size={17} />
+                Open Dashboard Reminders
+              </Link>
+
+              <Link to="/sync" onClick={() => setNotificationOpen(false)}>
+                <ShieldCheck size={17} />
+                Check Cloud Backup
+              </Link>
+            </div>
+          )}
+        </div>
+
+        <div
+          className={profileOpen ? 'navbar-profile-wrap click-open' : 'navbar-profile-wrap'}
+          ref={profileRef}
+        >
+          <button
+            type="button"
+            className="navbar-profile-btn"
+            onClick={(event) => {
+              event.preventDefault()
+              event.stopPropagation()
+              setProfileOpen((prev) => !prev)
+              setNotificationOpen(false)
+            }}
+            aria-expanded={profileOpen}
+            aria-haspopup="menu"
+          >
+            <div className="navbar-avatar">
+              {avatarUrl ? (
+                <img src={avatarUrl} alt={username} />
+              ) : (
+                username.charAt(0).toUpperCase()
+              )}
+            </div>
+
+            <div className="navbar-profile-copy">
+              <strong>{username}</strong>
+              <span>{isAuthenticated ? rank : 'Not signed in'}</span>
+            </div>
+
+            <ChevronDown size={17} className={profileOpen ? 'rotate-icon' : ''} />
+          </button>
+
+          {profileOpen && (
+            <div
+              className="navbar-profile-menu click-dropdown-menu"
+              role="menu"
+              onClick={(event) => event.stopPropagation()}
             >
-              <Bell size={19} />
-              {alertCount > 0 && <span className="notification-dot"></span>}
-            </button>
-
-            <NotificationPanel
-              isOpen={notificationsOpen}
-              onClose={() => setNotificationsOpen(false)}
-            />
-          </div>
-
-          <div className="profile-dropdown premium-profile-dropdown">
-            <button className="profile-btn premium-profile-btn" type="button">
-              <div className="profile-avatar premium-profile-avatar">
-                {avatarUrl ? (
-                  <img src={avatarUrl} alt={username} />
-                ) : (
-                  username.charAt(0).toUpperCase()
-                )}
-              </div>
-
-              <div className="profile-info premium-profile-info">
-                <strong>{username}</strong>
-                <span>
-                  {rank} · LVL {level}
-                </span>
-              </div>
-
-              <ChevronDown size={17} />
-            </button>
-
-            <div className="dropdown-menu-panel premium-dropdown-panel">
-              <div className="premium-dropdown-header">
-                <div className="premium-dropdown-avatar">
+              <div className="navbar-profile-menu-head">
+                <div className="navbar-avatar large">
                   {avatarUrl ? (
                     <img src={avatarUrl} alt={username} />
                   ) : (
@@ -161,42 +225,34 @@ function Navbar({ toggleSidebar }) {
 
                 <div>
                   <strong>{username}</strong>
-                  <span>{rank}</span>
+                  <span>{email}</span>
                 </div>
               </div>
 
-              <Link to="/profile" className="dropdown-item-life">
+              <Link to="/profile" onClick={() => setProfileOpen(false)}>
                 <User size={17} />
                 Profile
               </Link>
 
-              <Link to="/settings" className="dropdown-item-life">
+              <Link to="/settings" onClick={() => setProfileOpen(false)}>
                 <Settings size={17} />
                 Settings
               </Link>
 
-              <button className="dropdown-item-life danger" type="button">
+              <Link to="/sync" onClick={() => setProfileOpen(false)}>
+                <ShieldCheck size={17} />
+                Cloud Backup
+              </Link>
+
+              <button type="button" onClick={handleLogout}>
                 <LogOut size={17} />
                 Logout
               </button>
             </div>
-          </div>
+          )}
         </div>
-      </header>
-
-      <QuickAddModal
-        isOpen={quickAddOpen}
-        onClose={() => setQuickAddOpen(false)}
-      />
-
-      <GlobalSearchModal
-        isOpen={searchOpen}
-        onClose={() => setSearchOpen(false)}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        openQuickAdd={() => setQuickAddOpen(true)}
-      />
-    </>
+      </div>
+    </header>
   )
 }
 

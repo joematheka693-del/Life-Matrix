@@ -1,0 +1,234 @@
+/* PHASE 9.8 — FORCE SIDEBAR SCROLL + CLICK DROPDOWN */
+
+/* SIDEBAR SCROLL FIX */
+.life-sidebar,
+.premium-sidebar {
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.sidebar-brand,
+.premium-sidebar-brand,
+.premium-sidebar-profile,
+.sidebar-rank-card,
+.premium-sidebar-rank-card {
+  flex: 0 0 auto !important;
+}
+
+.sidebar-nav,
+.premium-sidebar-nav,
+.grouped-sidebar-nav {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding-right: 8px !important;
+  padding-bottom: 24px !important;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--lm-primary) 55%, transparent) transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar,
+.premium-sidebar-nav::-webkit-scrollbar,
+.grouped-sidebar-nav::-webkit-scrollbar {
+  width: 7px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track,
+.premium-sidebar-nav::-webkit-scrollbar-track,
+.grouped-sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb,
+.premium-sidebar-nav::-webkit-scrollbar-thumb,
+.grouped-sidebar-nav::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--lm-primary) 45%, transparent);
+  border-radius: 999px;
+}
+
+.sidebar-nav-group {
+  display: grid !important;
+  gap: 8px !important;
+  margin-bottom: 16px !important;
+}
+
+.premium-sidebar-link {
+  flex: 0 0 auto !important;
+}
+
+/* NAVBAR CLICK DROPDOWN FIX */
+.navbar-profile-wrap {
+  position: relative !important;
+}
+
+/*
+  This disables old hover dropdown behavior from previous CSS.
+  The dropdown should only exist when React renders .click-dropdown-menu.
+*/
+.navbar-profile-wrap:hover .navbar-profile-menu:not(.click-dropdown-menu),
+.navbar-profile-wrap:hover .profile-dropdown,
+.navbar-profile-wrap:hover .dropdown-menu,
+.navbar-profile-wrap:hover .profile-menu {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+.navbar-profile-menu:not(.click-dropdown-menu) {
+  display: none !important;
+}
+
+.navbar-profile-wrap.click-open .click-dropdown-menu,
+.click-dropdown-menu {
+  position: absolute !important;
+  top: calc(100% + 12px) !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  width: 290px !important;
+  padding: 12px !important;
+  border-radius: 28px !important;
+  background: var(--lm-surface) !important;
+  border: 1px solid var(--lm-border) !important;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.28) !important;
+  display: grid !important;
+  gap: 7px !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+}
+
+.navbar-profile-btn {
+  border: 1px solid var(--lm-border) !important;
+  background: var(--lm-surface) !important;
+  color: var(--lm-text) !important;
+  border-radius: 999px !important;
+  min-height: 48px !important;
+  padding: 5px 10px 5px 5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  box-shadow: var(--lm-shadow-soft) !important;
+}
+
+.navbar-profile-btn:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--lm-primary) 30%, transparent) !important;
+  outline-offset: 3px !important;
+}
+
+.navbar-avatar {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 999px !important;
+  display: grid !important;
+  place-items: center !important;
+  background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary)) !important;
+  color: white !important;
+  font-weight: 950 !important;
+  overflow: hidden !important;
+  flex: 0 0 auto !important;
+}
+
+.navbar-avatar.large {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.navbar-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.navbar-profile-copy {
+  display: grid !important;
+  text-align: left !important;
+  line-height: 1.1 !important;
+}
+
+.navbar-profile-copy strong {
+  color: var(--lm-text) !important;
+  font-size: 0.9rem !important;
+  font-weight: 950 !important;
+}
+
+.navbar-profile-copy span {
+  color: var(--lm-muted) !important;
+  font-size: 0.74rem !important;
+  font-weight: 850 !important;
+}
+
+.rotate-icon {
+  transform: rotate(180deg) !important;
+}
+
+.navbar-profile-menu-head {
+  padding: 12px !important;
+  border-radius: 22px !important;
+  background: var(--lm-surface-soft) !important;
+  border: 1px solid var(--lm-border) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.navbar-profile-menu-head strong {
+  display: block !important;
+  color: var(--lm-text) !important;
+  font-weight: 950 !important;
+}
+
+.navbar-profile-menu-head span {
+  display: block !important;
+  margin-top: 3px !important;
+  color: var(--lm-muted) !important;
+  font-size: 0.8rem !important;
+  font-weight: 800 !important;
+  word-break: break-word !important;
+}
+
+.click-dropdown-menu a,
+.click-dropdown-menu button {
+  width: 100% !important;
+  min-height: 44px !important;
+  padding: 0 12px !important;
+  border-radius: 17px !important;
+  border: none !important;
+  background: transparent !important;
+  color: var(--lm-text) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+  font-weight: 900 !important;
+  text-align: left !important;
+  cursor: pointer !important;
+}
+
+.click-dropdown-menu a:hover,
+.click-dropdown-menu button:hover {
+  background: var(--lm-surface-soft) !important;
+  color: var(--lm-primary) !important;
+}
+
+/* AUTH PAGE LAYOUT SAFETY */
+.auth-only-app {
+  min-height: 100vh !important;
+  background: var(--lm-bg) !important;
+}
+
+@media (max-width: 720px) {
+  .navbar-profile-copy {
+    display: none !important;
+  }
+
+  .click-dropdown-menu {
+    right: -6px !important;
+    width: min(290px, calc(100vw - 22px)) !important;
+  }
+}

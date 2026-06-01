@@ -1,114 +1,92 @@
-/* PHASE 5.9 — FIXED PREMIUM SIDEBAR */
+/* CLEAN REPLACEMENT — SIDEBAR.CSS */
+/* Replaces existing sidebar.css. Adds real scrolling without changing logic. */
 
 .life-sidebar,
 .premium-sidebar {
-  position: fixed;
-  inset: 0 auto 0 0;
-  z-index: 120;
-  width: 318px;
-  padding: 22px;
-  background:
-    radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 28%),
-    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-  border-right: 1px solid rgba(226, 232, 240, 0.88);
-  overflow-y: auto;
-  transform: translateX(-100%);
-  transition: 0.28s ease;
-  box-shadow: 22px 0 60px rgba(15, 23, 42, 0.08);
-}
-
-.life-sidebar.open,
-.premium-sidebar.open {
-  transform: translateX(0);
+  width: 310px;
+  height: 100vh;
+  max-height: 100vh;
+  padding: 18px;
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  box-shadow: 16px 0 60px rgba(15, 23, 42, 0.055);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 280;
 }
 
 .sidebar-brand,
 .premium-sidebar-brand {
-  padding: 10px 4px 20px;
-  display: grid;
-  grid-template-columns: 56px minmax(0, 1fr) 42px;
+  flex: 0 0 auto;
+  display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  padding-bottom: 14px;
 }
 
 .brand-orb,
 .premium-brand-orb {
-  width: 56px;
-  height: 56px;
-  border-radius: 22px;
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.7), transparent 45%),
-    linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
+  width: 48px;
+  height: 48px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
   display: grid;
   place-items: center;
-  font-weight: 950;
-  box-shadow: 0 18px 36px rgba(59, 130, 246, 0.24);
+  flex: 0 0 auto;
 }
 
-.sidebar-brand h1,
-.premium-sidebar-brand h1 {
+.premium-sidebar-brand-text h1 {
   margin: 0;
-  color: var(--lm-text);
-  font-size: 1.2rem;
+  color: #0f172a;
+  font-size: 1.1rem;
   font-weight: 950;
-  letter-spacing: -0.04em;
 }
 
-.sidebar-brand p,
-.premium-sidebar-brand p {
-  margin: 3px 0 0;
-  color: var(--lm-muted);
-  font-size: 0.76rem;
+.premium-sidebar-brand-text p {
+  margin: 2px 0 0;
+  color: #64748b;
+  font-size: 0.78rem;
   font-weight: 850;
 }
 
 .sidebar-close-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 16px;
-  border: 1px solid var(--lm-border);
-  background: white;
-  color: var(--lm-muted);
-  display: grid;
+  margin-left: auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #0f172a;
+  display: none;
   place-items: center;
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
-  transition: 0.18s ease;
-}
-
-.sidebar-close-btn:hover {
-  color: #ef4444;
-  background: #fff1f2;
-  border-color: rgba(239, 68, 68, 0.2);
-  transform: translateY(-1px);
 }
 
 .premium-sidebar-profile {
-  margin: 4px 0 22px;
-  padding: 16px;
-  border-radius: 28px;
-  background:
-    radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 34%),
-    white;
-  border: 1px solid var(--lm-border);
+  flex: 0 0 auto;
+  padding: 14px;
+  margin: 8px 0 16px;
+  border-radius: 24px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
-  gap: 14px;
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+  gap: 12px;
 }
 
 .premium-sidebar-avatar {
-  width: 58px;
-  height: 58px;
-  border-radius: 22px;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
   display: grid;
   place-items: center;
-  font-size: 1.25rem;
   font-weight: 950;
+  overflow: hidden;
   flex: 0 0 auto;
 }
 
@@ -123,19 +101,16 @@
 }
 
 .premium-sidebar-profile-info span {
-  display: block;
-  color: var(--lm-primary);
+  color: #64748b;
   font-size: 0.72rem;
   font-weight: 950;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 }
 
 .premium-sidebar-profile-info strong {
   display: block;
-  margin-top: 3px;
-  color: var(--lm-text);
-  font-size: 1rem;
+  color: #0f172a;
   font-weight: 950;
   white-space: nowrap;
   overflow: hidden;
@@ -143,180 +118,206 @@
 }
 
 .premium-sidebar-profile-info p {
-  margin: 4px 0 0;
-  color: var(--lm-muted);
-  font-size: 0.78rem;
-  font-weight: 850;
+  margin: 2px 0 0;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 800;
 }
 
 .sidebar-nav,
-.premium-sidebar-nav {
+.premium-sidebar-nav,
+.grouped-sidebar-nav {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+  padding-bottom: 20px;
   display: grid;
-  gap: 7px;
+  gap: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar,
+.premium-sidebar-nav::-webkit-scrollbar,
+.grouped-sidebar-nav::-webkit-scrollbar {
+  width: 7px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track,
+.premium-sidebar-nav::-webkit-scrollbar-track,
+.grouped-sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb,
+.premium-sidebar-nav::-webkit-scrollbar-thumb,
+.grouped-sidebar-nav::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.sidebar-nav-group {
+  display: grid;
+  gap: 8px;
 }
 
 .premium-nav-label {
-  margin: 8px 8px 8px;
-  color: var(--lm-muted);
+  padding: 0 8px;
+  color: #94a3b8;
   font-size: 0.72rem;
   font-weight: 950;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 
 .sidebar-link,
 .premium-sidebar-link {
-  position: relative;
-  min-height: 58px;
-  padding: 9px 11px;
+  min-height: 56px;
+  padding: 8px 10px;
   border-radius: 20px;
-  color: var(--lm-muted);
+  color: #475569;
   text-decoration: none;
-  display: flex;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 10px;
   align-items: center;
-  gap: 12px;
-  transition: 0.18s ease;
+  border: 1px solid transparent;
+  transition: 0.16s ease;
 }
 
-.premium-sidebar-link:hover {
-  background: white;
-  color: var(--lm-primary);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
-  transform: translateX(2px);
-}
-
+.sidebar-link:hover,
+.premium-sidebar-link:hover,
 .sidebar-link.active,
 .premium-sidebar-link.active {
-  background:
-    linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(99, 102, 241, 0.1)),
-    white;
-  color: var(--lm-primary);
-  box-shadow: 0 18px 38px rgba(59, 130, 246, 0.12);
-}
-
-.premium-sidebar-link.active::before {
-  content: '';
-  position: absolute;
-  left: -22px;
-  top: 14px;
-  bottom: 14px;
-  width: 5px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--lm-primary), var(--lm-secondary));
+  background: #eff6ff;
+  border-color: #dbeafe;
+  color: #2563eb;
 }
 
 .premium-sidebar-link-icon {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 15px;
-  background: #f8fafc;
-  color: currentColor;
+  background: #f1f5f9;
   display: grid;
   place-items: center;
-  flex: 0 0 auto;
+  color: #2563eb;
 }
 
+.sidebar-link.active .premium-sidebar-link-icon,
 .premium-sidebar-link.active .premium-sidebar-link-icon {
-  background: white;
-  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.12);
+  background: #2563eb;
+  color: white;
 }
 
 .premium-sidebar-link-text {
-  display: grid;
   min-width: 0;
 }
 
 .premium-sidebar-link-text strong {
-  color: currentColor;
+  display: block;
+  color: inherit;
   font-size: 0.9rem;
   font-weight: 950;
-  line-height: 1.1;
 }
 
 .premium-sidebar-link-text small {
-  margin-top: 4px;
-  color: var(--lm-muted);
-  font-size: 0.72rem;
-  font-weight: 760;
-  line-height: 1.1;
+  display: block;
+  margin-top: 2px;
+  color: #64748b;
+  font-size: 0.73rem;
+  font-weight: 750;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sidebar-rank-card,
 .premium-sidebar-rank-card {
-  margin-top: 22px;
-  padding: 18px;
-  border-radius: 28px;
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.55), transparent 35%),
-    linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
-  color: white;
-  box-shadow: 0 22px 48px rgba(59, 130, 246, 0.24);
+  flex: 0 0 auto;
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 22px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
 }
 
 .rank-card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
 }
 
-.rank-card-top span,
-.rank-xp {
-  color: rgba(255, 255, 255, 0.82);
+.rank-card-top span {
+  color: #64748b;
   font-size: 0.78rem;
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .rank-card-top strong {
-  color: white;
-  font-size: 1.05rem;
+  color: #0f172a;
   font-weight: 950;
 }
 
 .rank-progress-bar {
-  width: 100%;
-  height: 10px;
-  margin: 14px 0 10px;
+  height: 8px;
+  margin-top: 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.22);
+  background: #e2e8f0;
   overflow: hidden;
 }
 
 .rank-progress-fill {
   height: 100%;
   border-radius: inherit;
-  background: white;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
 }
 
 .rank-xp {
-  margin: 0;
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
-@media (min-width: 1101px) {
-  .life-sidebar.open,
-  .premium-sidebar.open {
-    transform: translateX(0);
-  }
+.sidebar-overlay {
+  display: none;
 }
 
 @media (max-width: 1100px) {
   .life-sidebar,
   .premium-sidebar {
-    width: min(88vw, 318px);
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateX(-105%);
+    transition: 0.2s ease;
+  }
+
+  .life-sidebar.open,
+  .premium-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-close-btn {
+    display: grid;
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    border: none;
+    background: rgba(15, 23, 42, 0.35);
+    z-index: 260;
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 420px) {
   .life-sidebar,
   .premium-sidebar {
-    padding: 18px;
-  }
-
-  .premium-sidebar-profile {
-    padding: 14px;
-  }
-
-  .premium-sidebar-link {
-    min-height: 54px;
+    width: min(310px, calc(100vw - 24px));
   }
 }

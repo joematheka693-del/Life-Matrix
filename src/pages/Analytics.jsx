@@ -24,6 +24,7 @@ import {
   YAxis,
 } from 'recharts'
 
+import FullSystemAnalytics from '../components/FullSystemAnalytics.jsx'
 import MatrixInsights from '../components/MatrixInsights.jsx'
 import MatrixReportPanel from '../components/MatrixReportPanel.jsx'
 import { useLifeData } from '../context/LifeDataContext'
@@ -61,19 +62,19 @@ function Analytics() {
       icon: Target,
       title: 'Total Tracked',
       value: stats.totalItems,
-      label: 'Items across modules',
+      label: 'Core items only',
     },
     {
       icon: TrendingUp,
-      title: 'Overall',
+      title: 'Core Overall',
       value: `${stats.overallProgress}%`,
-      label: 'Average progress',
+      label: 'Main module average',
     },
     {
       icon: BarChart3,
       title: 'Completed',
       value: stats.completedItems,
-      label: 'Finished items',
+      label: 'Finished core items',
     },
     {
       icon: Radar,
@@ -90,16 +91,16 @@ function Analytics() {
           <p className="page-kicker">Analytics Core</p>
           <h1>Decode your progress across every Life Matrix module.</h1>
           <p>
-            Analytics now includes smart insights and a real Matrix Report
-            Engine for exporting your progress.
+            Analytics now connects the original core modules and the newer
+            system modules into one performance center.
           </p>
         </div>
 
         <div className="analytics-score-terminal">
           <TrendingUp size={42} />
-          <span>Overall Progress</span>
+          <span>Core Progress</span>
           <strong>{stats.overallProgress}%</strong>
-          <p>{stats.totalItems} tracked items · {stats.calculatedRank}</p>
+          <p>{stats.totalItems} core items · {stats.calculatedRank}</p>
         </div>
       </div>
 
@@ -123,6 +124,8 @@ function Analytics() {
         })}
       </div>
 
+      <FullSystemAnalytics />
+
       <MatrixInsights />
 
       <MatrixReportPanel />
@@ -131,8 +134,8 @@ function Analytics() {
         <article className="analytics-chart-console glass-card">
           <div className="analytics-card-header">
             <div>
-              <p className="page-kicker">Module Progress</p>
-              <h2>Average completion</h2>
+              <p className="page-kicker">Core Module Progress</p>
+              <h2>Original module completion</h2>
             </div>
 
             <BarChart3 size={22} />
@@ -158,8 +161,8 @@ function Analytics() {
         <article className="analytics-chart-console glass-card">
           <div className="analytics-card-header">
             <div>
-              <p className="page-kicker">Module Spread</p>
-              <h2>Tracked item distribution</h2>
+              <p className="page-kicker">Core Module Spread</p>
+              <h2>Original item distribution</h2>
             </div>
 
             <PieChart size={22} />
@@ -193,7 +196,7 @@ function Analytics() {
           <div className="analytics-card-header">
             <div>
               <p className="page-kicker">Activity Timeline</p>
-              <h2>Top active items</h2>
+              <h2>Top active core items</h2>
             </div>
 
             <BookOpen size={22} />
@@ -214,8 +217,8 @@ function Analytics() {
         </article>
 
         <article className="analytics-module-console glass-card">
-          <p className="page-kicker">Module Summary</p>
-          <h2>Tracked areas</h2>
+          <p className="page-kicker">Core Summary</p>
+          <h2>Original tracked areas</h2>
 
           <div className="analytics-module-list">
             {[

@@ -1,0 +1,388 @@
+/* PHASE 8.4 — GLOBAL UI CLEANUP + RESPONSIVE POLISH */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.life-content {
+  max-width: 1560px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.page-shell {
+  width: 100%;
+  animation: pageFadeUp 0.28s ease both;
+}
+
+@keyframes pageFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-gap {
+  margin-top: clamp(20px, 3vw, 32px);
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--lm-text);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 950;
+  letter-spacing: -0.045em;
+}
+
+.page-kicker {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--lm-primary) 11%, transparent);
+  border: 1px solid color-mix(in srgb, var(--lm-primary) 14%, transparent);
+  color: var(--lm-primary);
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.btn-life,
+.btn-soft-life,
+button.btn-life,
+button.btn-soft-life,
+a.btn-life,
+a.btn-soft-life {
+  min-height: 46px;
+  padding: 0 17px;
+  border-radius: 999px;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  font-weight: 950;
+  cursor: pointer;
+  transition: 0.18s ease;
+  white-space: nowrap;
+}
+
+.btn-life,
+button.btn-life,
+a.btn-life {
+  color: white;
+  background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
+  box-shadow: 0 16px 34px color-mix(in srgb, var(--lm-primary) 23%, transparent);
+}
+
+.btn-life:hover,
+button.btn-life:hover,
+a.btn-life:hover {
+  color: white;
+  transform: translateY(-1px);
+}
+
+.btn-soft-life,
+button.btn-soft-life,
+a.btn-soft-life {
+  color: var(--lm-primary);
+  background: color-mix(in srgb, var(--lm-primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--lm-primary) 15%, transparent);
+}
+
+.btn-soft-life:hover,
+button.btn-soft-life:hover,
+a.btn-soft-life:hover {
+  color: var(--lm-primary);
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--lm-primary) 14%, transparent);
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: color-mix(in srgb, var(--lm-primary) 42%, transparent) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--lm-primary) 10%, transparent);
+}
+
+.glass-card,
+.system-stat-card,
+.system-item-card,
+.system-form-card,
+.dashboard-module-card,
+.profile-metric-card,
+.analytics-metric-card,
+.habit-metric-card,
+.planner-metric-card,
+.notes-metric-card,
+.achievement-metric-card {
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.system-item-card:hover,
+.dashboard-module-card:hover,
+.home-module-card:hover,
+.matrix-health-card:hover,
+.profile-metric-card:hover,
+.analytics-metric-card:hover,
+.habit-metric-card:hover,
+.planner-metric-card:hover,
+.notes-metric-card:hover,
+.achievement-metric-card:hover {
+  border-color: color-mix(in srgb, var(--lm-primary) 24%, transparent) !important;
+}
+
+.grouped-sidebar-nav {
+  padding-right: 6px;
+}
+
+.sidebar-nav-group {
+  display: grid;
+  gap: 7px;
+}
+
+.sidebar-nav-group + .sidebar-nav-group {
+  margin-top: 18px;
+}
+
+.premium-sidebar {
+  overflow: hidden;
+}
+
+.premium-sidebar-nav {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--lm-primary) 34%, transparent) transparent;
+}
+
+.premium-sidebar-nav::-webkit-scrollbar {
+  width: 7px;
+}
+
+.premium-sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.premium-sidebar-nav::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--lm-primary) 32%, transparent);
+  border-radius: 999px;
+}
+
+.premium-sidebar-link {
+  min-height: 58px;
+}
+
+.premium-sidebar-link-text small {
+  line-height: 1.2;
+}
+
+.life-empty-state {
+  padding: 34px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--lm-primary) 10%, transparent), transparent 38%),
+    var(--lm-surface);
+  border: 1px solid var(--lm-border);
+  color: var(--lm-muted);
+  text-align: center;
+}
+
+.life-empty-state h3 {
+  margin: 0 0 8px;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+@media (max-width: 1300px) {
+  .life-content {
+    max-width: 100%;
+  }
+
+  .system-grid-4,
+  .page-action-grid,
+  .analytics-insight-grid,
+  .achievement-stat-grid,
+  .notes-stat-grid,
+  .planner-stat-grid,
+  .habit-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .life-app.sidebar-open .life-main,
+  .life-app.sidebar-closed .life-main,
+  .life-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .premium-sidebar {
+    position: fixed !important;
+    inset: 0 auto 0 0;
+    z-index: 300;
+    transform: translateX(-105%);
+    transition: transform 0.2s ease;
+  }
+
+  .premium-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    z-index: 250;
+    border: none;
+    background: rgba(15, 23, 42, 0.42);
+    backdrop-filter: blur(8px);
+  }
+
+  .sidebar-close-btn {
+    display: grid !important;
+  }
+
+  .life-content {
+    padding-inline: clamp(14px, 3vw, 24px) !important;
+  }
+
+  .system-hero,
+  .mood-command-hero,
+  .projects-command-hero,
+  .resources-command-hero,
+  .review-command-hero,
+  .planner-command-hero,
+  .habits-command-hero,
+  .notes-command-hero,
+  .achievements-command-hero {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .life-content {
+    padding-inline: 12px !important;
+    padding-bottom: 30px !important;
+  }
+
+  .system-grid-4,
+  .page-action-grid,
+  .analytics-insight-grid,
+  .achievement-stat-grid,
+  .notes-stat-grid,
+  .planner-stat-grid,
+  .habit-stat-grid,
+  .system-list-grid,
+  .system-card-grid,
+  .achievement-badge-grid,
+  .planner-grid-premium,
+  .habit-grid-premium,
+  .notes-grid-premium {
+    grid-template-columns: 1fr !important;
+  }
+
+  .system-hero,
+  .mood-command-hero,
+  .projects-command-hero,
+  .resources-command-hero,
+  .review-command-hero,
+  .planner-command-hero,
+  .habits-command-hero,
+  .notes-command-hero,
+  .achievements-command-hero,
+  .dashboard-command-hero,
+  .analytics-command-hero,
+  .settings-command-hero,
+  .profile-command-hero {
+    padding: 22px !important;
+    border-radius: 30px !important;
+  }
+
+  .system-hero h1,
+  .mood-command-hero h1,
+  .projects-command-hero h1,
+  .resources-command-hero h1,
+  .review-command-hero h1,
+  .planner-command-hero h1,
+  .habits-command-hero h1,
+  .notes-command-hero h1,
+  .achievements-command-hero h1 {
+    font-size: clamp(2rem, 13vw, 3.2rem) !important;
+    letter-spacing: -0.06em !important;
+  }
+
+  .system-hero-actions,
+  .mood-hero-actions,
+  .projects-hero-actions,
+  .resources-hero-actions,
+  .review-hero-actions,
+  .planner-hero-actions,
+  .habits-hero-actions,
+  .notes-hero-actions,
+  .achievement-hero-actions,
+  .dashboard-hero-actions {
+    flex-direction: column;
+  }
+
+  .system-hero-actions .btn-life,
+  .system-hero-actions .btn-soft-life,
+  .mood-hero-actions .btn-life,
+  .projects-hero-actions .btn-life,
+  .resources-hero-actions .btn-life,
+  .review-hero-actions .btn-life,
+  .review-hero-actions .btn-soft-life,
+  .planner-hero-actions .btn-life,
+  .planner-hero-actions .btn-soft-life,
+  .habits-hero-actions .btn-life,
+  .habits-hero-actions .btn-soft-life,
+  .notes-hero-actions .btn-life,
+  .notes-hero-actions .btn-soft-life,
+  .achievement-hero-actions .btn-life,
+  .achievement-hero-actions .btn-soft-life,
+  .dashboard-hero-actions .btn-life,
+  .dashboard-hero-actions .btn-soft-life {
+    width: 100%;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .premium-sidebar {
+    width: min(88vw, 340px) !important;
+  }
+}

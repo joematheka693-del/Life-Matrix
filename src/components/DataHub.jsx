@@ -1,54 +1,68 @@
-import { Download, FileJson, RefreshCcw, ShieldCheck, Trash2, Upload } from 'lucide-react'
+import {
+  Archive,
+  CheckCircle2,
+  DatabaseBackup,
+  Download,
+  FileJson,
+  RefreshCcw,
+  ShieldCheck,
+  Trash2,
+  Upload,
+} from 'lucide-react'
 
 import { useLifeData } from '../context/LifeDataContext.jsx'
+import {
+  LIFE_MATRIX_STORAGE_KEYS,
+  buildFullBackupPayload,
+  getStorageSnapshot,
+  restoreFullBackupPayload,
+} from '../utils/storageKeys.js'
 
 function DataHub() {
   const { lifeData, resetLifeData } = useLifeData()
+  const snapshot = getStorageSnapshot()
 
-  const habits = (() => {
-    try {
-      return JSON.parse(localStorage.getItem('life_matrix_habits')) || []
-    } catch {
-      return []
-    }
-  })()
+  const totalStoredModules = snapshot.filter((item) => item.exists).length
+  const totalRecords = snapshot.reduce((sum, item) => sum + item.count, 0)
+  const totalSize = snapshot.reduce((sum, item) => sum + item.size, 0)
 
-  const focusSessions = Number(localStorage.getItem('life_matrix_focus_sessions')) || 0
+  const downloadJson = (filename, payload) => {
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {
+      type: 'application/json',
+    })
 
-  const fullBackup = {
-    lifeData,
-    habits,
-    focusSessions,
-    exportedAt: new Date().toISOString(),
-    version: 'Life Matrix Phase 7.1',
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+
+    link.href = url
+    link.download = filename
+    link.click()
+
+    URL.revokeObjectURL(url)
   }
 
   const exportFullBackup = () => {
-    const blob = new Blob([JSON.stringify(fullBackup, null, 2)], {
-      type: 'application/json',
-    })
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-
-    link.href = url
-    link.download = 'life-matrix-full-backup.json'
-    link.click()
-
-    URL.revokeObjectURL(url)
+    downloadJson('life-matrix-full-system-backup.json', buildFullBackupPayload())
   }
 
   const exportLifeDataOnly = () => {
-    const blob = new Blob([JSON.stringify(lifeData, null, 2)], {
-      type: 'application/json',
+    downloadJson('life-matrix-main-data-only.json', {
+      app: 'Life Matrix',
+      version: 'Phase 8.6',
+      exportedAt: new Date().toISOString(),
+      modules: {
+        life_matrix_data: lifeData,
+      },
     })
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement('a')
+  }
 
-    link.href = url
-    link.download = 'life-matrix-data-only.json'
-    link.click()
-
-    URL.revokeObjectURL(url)
+  const exportStorageMap = () => {
+    downloadJson('life-matrix-storage-map.json', {
+      app: 'Life Matrix',
+      version: 'Phase 8.6',
+      exportedAt: new Date().toISOString(),
+      snapshot,
+    })
   }
 
   const importBackup = (event) => {
@@ -64,59 +78,72 @@ function DataHub() {
       try {
         const payload = JSON.parse(reader.result)
 
-        if (payload.lifeData) {
-          localStorage.setItem('life_matrix_data', JSON.stringify(payload.lifeData))
-        } else {
-          localStorage.setItem('life_matrix_data', JSON.stringify(payload))
-        }
+        restoreFullBackupPayload(payload)
 
-        if (payload.habits) {
-          localStorage.setItem('life_matrix_habits', JSON.stringify(payload.habits))
-        }
-
-        if (payload.focusSessions !== undefined) {
-          localStorage.setItem('life_matrix_focus_sessions', String(payload.focusSessions))
-        }
-
+        alert('Backup restored successfully. The app will reload now.')
         window.location.reload()
-      } catch {
-        alert('Invalid backup file')
+      } catch (error) {
+        alert(error.message || 'Invalid backup file')
       }
     }
 
     reader.readAsText(file)
   }
 
-  const clearFocusSessions = () => {
-    localStorage.removeItem('life_matrix_focus_sessions')
+  const clearModule = (key) => {
+    const confirmed = window.confirm(`Clear ${key}?`)
+
+    if (!confirmed) {
+      return
+    }
+
+    localStorage.removeItem(key)
     window.location.reload()
   }
 
-  const clearHabits = () => {
-    const confirmed = window.confirm('Clear all saved habits?')
+  const clearAllExtraModules = () => {
+    const confirmed = window.confirm(
+      'Clear all extra modules except the main LifeData? Export a backup first.'
+    )
+
+    if (!confirmed) {
+      return
+    }
+
+    LIFE_MATRIX_STORAGE_KEYS.filter((item) => item.key !== 'life_matrix_data').forEach((item) => {
+      localStorage.removeItem(item.key)
+    })
+
+    window.location.reload()
+  }
+
+  const resetMainData = () => {
+    const confirmed = window.confirm(
+      'Reset main Life Matrix data? This affects goals, workouts, studying, reading, watchlist, profile, and settings.'
+    )
 
     if (confirmed) {
-      localStorage.removeItem('life_matrix_habits')
-      window.location.reload()
+      resetLifeData()
     }
   }
 
   return (
-    <section className="data-hub-section section-gap">
+    <section className="data-hub-section expanded-data-hub section-gap">
       <div className="data-hub-hero glass-card">
         <div>
-          <p className="page-kicker">Data Hub</p>
-          <h2>Backup, restore, and manage local data</h2>
+          <p className="page-kicker">Data Hub 8.6</p>
+          <h2>Full backup and restore expansion</h2>
           <p>
-            Export your full Life Matrix, import a backup, or reset selected
-            localStorage data safely from one panel.
+            Export and restore every Life Matrix storage module: main LifeData,
+            habits, planner, notes, mood, projects, resources, reviews, finance,
+            skills, decisions, launch checklist, and focus sessions.
           </p>
         </div>
 
         <div className="data-hub-score">
-          <ShieldCheck size={34} />
-          <span>Storage</span>
-          <strong>Local</strong>
+          <DatabaseBackup size={34} />
+          <span>Stored Modules</span>
+          <strong>{totalStoredModules}</strong>
         </div>
       </div>
 
@@ -126,14 +153,14 @@ function DataHub() {
             <Download size={24} />
           </div>
 
-          <h3>Full Backup</h3>
+          <h3>Full System Backup</h3>
           <p>
-            Exports LifeData, Habits, Focus Sessions, version, and export date.
+            Exports all known localStorage keys into one structured backup file.
           </p>
 
           <button type="button" className="btn-life" onClick={exportFullBackup}>
             <Download size={18} />
-            Export Full Backup
+            Export Everything
           </button>
         </article>
 
@@ -142,15 +169,30 @@ function DataHub() {
             <FileJson size={24} />
           </div>
 
-          <h3>Data Only</h3>
+          <h3>Main Data Only</h3>
           <p>
-            Exports the main LifeDataContext data only: goals, workouts, reading,
-            settings, profile, and watchlist.
+            Exports only the core LifeDataContext data for safer small backups.
           </p>
 
           <button type="button" className="btn-life" onClick={exportLifeDataOnly}>
             <FileJson size={18} />
-            Export Data Only
+            Export Main Data
+          </button>
+        </article>
+
+        <article className="data-hub-card glass-card">
+          <div className="data-hub-card-icon">
+            <Archive size={24} />
+          </div>
+
+          <h3>Storage Map</h3>
+          <p>
+            Exports a quick report showing which modules currently have data.
+          </p>
+
+          <button type="button" className="btn-life" onClick={exportStorageMap}>
+            <Archive size={18} />
+            Export Storage Map
           </button>
         </article>
 
@@ -159,9 +201,10 @@ function DataHub() {
             <Upload size={24} />
           </div>
 
-          <h3>Import Backup</h3>
+          <h3>Restore Backup</h3>
           <p>
-            Import either a full backup or a data-only backup.
+            Import a full backup or main-data-only backup. The app reloads after
+            restore.
           </p>
 
           <label className="data-hub-upload-btn">
@@ -172,39 +215,84 @@ function DataHub() {
         </article>
       </div>
 
+      <div className="data-summary-grid section-gap">
+        <article className="data-summary-card">
+          <ShieldCheck size={22} />
+          <p>Modules Stored</p>
+          <h3>{totalStoredModules}</h3>
+          <span>Out of {LIFE_MATRIX_STORAGE_KEYS.length}</span>
+        </article>
+
+        <article className="data-summary-card">
+          <CheckCircle2 size={22} />
+          <p>Total Records</p>
+          <h3>{totalRecords}</h3>
+          <span>Across local modules</span>
+        </article>
+
+        <article className="data-summary-card">
+          <DatabaseBackup size={22} />
+          <p>Storage Size</p>
+          <h3>{totalSize}</h3>
+          <span>Approx. characters</span>
+        </article>
+
+        <article className="data-summary-card">
+          <RefreshCcw size={22} />
+          <p>Restore Mode</p>
+          <h3>JSON</h3>
+          <span>Local import/export</span>
+        </article>
+      </div>
+
+      <article className="storage-module-table glass-card section-gap">
+        <div className="dashboard-card-header">
+          <div>
+            <p className="page-kicker">Storage Modules</p>
+            <h2>Backup coverage map</h2>
+          </div>
+
+          <DatabaseBackup size={22} />
+        </div>
+
+        <div className="storage-module-list">
+          {snapshot.map((item) => (
+            <div className={item.exists ? 'storage-module-row active' : 'storage-module-row'} key={item.key}>
+              <div>
+                <span>{item.label}</span>
+                <small>{item.key}</small>
+              </div>
+
+              <strong>{item.exists ? `${item.count} records` : 'Empty'}</strong>
+
+              <a href={item.route}>Open</a>
+
+              <button type="button" onClick={() => clearModule(item.key)}>
+                <Trash2 size={15} />
+                Clear
+              </button>
+            </div>
+          ))}
+        </div>
+      </article>
+
       <article className="data-danger-zone glass-card">
         <div>
           <p className="page-kicker">Danger Zone</p>
           <h2>Reset local data</h2>
           <p>
-            These actions affect browser localStorage. Export a backup before
-            resetting.
+            Export a full backup before clearing anything. These actions affect
+            browser localStorage on this device only.
           </p>
         </div>
 
         <div className="data-danger-actions">
-          <button type="button" onClick={clearFocusSessions}>
-            <RefreshCcw size={17} />
-            Clear Focus Sessions
-          </button>
-
-          <button type="button" onClick={clearHabits}>
+          <button type="button" onClick={clearAllExtraModules}>
             <Trash2 size={17} />
-            Clear Habits
+            Clear Extra Modules
           </button>
 
-          <button
-            type="button"
-            onClick={() => {
-              const confirmed = window.confirm(
-                'Reset all Life Matrix data? This cannot be undone.'
-              )
-
-              if (confirmed) {
-                resetLifeData()
-              }
-            }}
-          >
+          <button type="button" onClick={resetMainData}>
             <Trash2 size={17} />
             Reset Main Data
           </button>

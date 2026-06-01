@@ -1,0 +1,88 @@
+/* PHASE 9.0 — BACKEND SYNC PREPARATION */
+
+.sync-page { padding-bottom: 44px; }
+
+.sync-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.sync-card,
+.sync-blueprint {
+  padding: 26px;
+  border-radius: 34px;
+  background: var(--lm-surface);
+  border: 1px solid var(--lm-border);
+}
+
+.sync-card > svg {
+  width: 58px;
+  height: 58px;
+  padding: 15px;
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--lm-primary) 12%, transparent);
+  color: var(--lm-primary);
+  margin-bottom: 16px;
+}
+
+.sync-card h3,
+.sync-blueprint h2 {
+  margin: 0;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+.sync-card p {
+  color: var(--lm-muted);
+  line-height: 1.65;
+}
+
+.sync-card label {
+  display: block;
+  color: var(--lm-muted);
+  font-size: .82rem;
+  font-weight: 950;
+  margin-bottom: 12px;
+}
+
+.sync-card input {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 8px;
+  padding: 0 15px;
+  border-radius: 18px;
+  border: 1px solid var(--lm-border);
+  background: var(--lm-surface-soft);
+  color: var(--lm-text);
+  outline: none;
+  font-weight: 850;
+}
+
+.sync-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sync-blueprint pre {
+  margin: 18px 0 0;
+  padding: 18px;
+  border-radius: 22px;
+  background: var(--lm-surface-soft);
+  border: 1px solid var(--lm-border);
+  color: var(--lm-text);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 1000px) {
+  .sync-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .sync-card,
+  .sync-blueprint { padding: 22px; border-radius: 30px; }
+  .sync-actions .btn-life,
+  .sync-actions .btn-soft-life,
+  .sync-card .btn-life { width: 100%; }
+}

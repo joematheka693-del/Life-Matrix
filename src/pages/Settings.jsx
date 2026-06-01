@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 
 import DataHub from '../components/DataHub.jsx'
+import ReminderSettings from '../components/ReminderSettings.jsx'
 import { useLifeData } from '../context/LifeDataContext'
 
 const themeOptions = [
@@ -145,8 +146,9 @@ function Settings() {
           <p className="page-kicker">System Control</p>
           <h1>Customize your Life Matrix operating system.</h1>
           <p>
-            Manage identity, avatar, rank, XP, reminders, theme, backup, restore,
-            and localStorage data from one premium control panel.
+            Manage identity, avatar, rank, XP, reminders, browser notification
+            permission, theme, backup, restore, and localStorage data from one
+            premium control panel.
           </p>
         </div>
 
@@ -440,6 +442,8 @@ function Settings() {
           </button>
         </article>
       </form>
+
+      <ReminderSettings />
 
       <DataHub />
     </section>

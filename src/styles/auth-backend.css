@@ -1,0 +1,89 @@
+/* PHASE 9.5 — CONNECT FRONTEND AUTH TO BACKEND */
+
+.auth-backend-config {
+  margin-top: 28px;
+  padding: 18px;
+  border-radius: 26px;
+  background: var(--lm-surface-soft);
+  border: 1px solid var(--lm-border);
+  display: grid;
+  gap: 12px;
+}
+
+.auth-backend-config label {
+  color: var(--lm-muted);
+  font-size: 0.82rem;
+  font-weight: 950;
+}
+
+.auth-backend-config input {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 8px;
+  padding: 0 14px;
+  border-radius: 16px;
+  border: 1px solid var(--lm-border);
+  background: var(--lm-surface);
+  color: var(--lm-text);
+  font-weight: 850;
+  outline: none;
+}
+
+.auth-backend-config p {
+  margin: 0;
+  color: var(--lm-muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.auth-form button:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.auth-loading-screen {
+  min-height: calc(100vh - 96px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-loading-card {
+  width: min(520px, 100%);
+  padding: 36px;
+  border-radius: 36px;
+  background: var(--lm-surface);
+  border: 1px solid var(--lm-border);
+  box-shadow: var(--lm-shadow-soft);
+  text-align: center;
+}
+
+.auth-loading-orb {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 18px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
+  box-shadow: 0 20px 44px color-mix(in srgb, var(--lm-primary) 24%, transparent);
+  animation: authPulse 1.2s ease infinite alternate;
+}
+
+.auth-loading-card h2 {
+  margin: 0;
+  color: var(--lm-text);
+  font-weight: 950;
+  letter-spacing: -0.04em;
+}
+
+@keyframes authPulse {
+  from {
+    transform: scale(0.95);
+    opacity: 0.78;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

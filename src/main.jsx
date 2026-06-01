@@ -37,28 +37,49 @@ import './styles/settings.css'
 import './styles/settings-theme-preview.css'
 import './styles/dashboard.css'
 import './styles/analytics.css'
+import './styles/system-analytics.css'
 import './styles/quickadd.css'
 import './styles/globalsearch.css'
 import './styles/notifications.css'
+import './styles/reminders.css'
+import './styles/reminder-settings.css'
 import './styles/xp.css'
 import './styles/insights.css'
 import './styles/dailyfocus.css'
 import './styles/report.css'
 import './styles/focustimer.css'
 import './styles/datahub.css'
+import './styles/datahub-expanded.css'
+import './styles/ui-cleanup.css'
+import './styles/pwa.css'
+import './styles/sync.css'
+import './styles/testing.css'
+import './styles/deploy.css'
+import './styles/auth.css'
+import './styles/auth-backend.css'
+import './styles/autosync.css'
+import './styles/navbar-click-fix.css'
+import './styles/sidebar-scroll-dropdown-force.css'
+import './styles/navbar-safe-fix.css'
 import './styles/responsive.css'
 
 import App from './App.jsx'
 import ThemeController from './components/ThemeController.jsx'
+import { AuthProvider } from './context/AuthContext.jsx'
 import { LifeDataProvider } from './context/LifeDataContext.jsx'
+import { registerServiceWorker } from './utils/registerServiceWorker.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <LifeDataProvider>
-        <ThemeController />
-        <App />
-      </LifeDataProvider>
+      <AuthProvider>
+        <LifeDataProvider>
+          <ThemeController />
+          <App />
+        </LifeDataProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 )
+
+registerServiceWorker()

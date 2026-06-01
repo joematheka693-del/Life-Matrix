@@ -1,0 +1,135 @@
+/* PHASE 9.7 — NAVBAR CLICK DROPDOWN + AUTH USER DISPLAY */
+
+.navbar-profile-wrap { position: relative; }
+
+.navbar-profile-btn {
+  border: 1px solid var(--lm-border);
+  background: var(--lm-surface);
+  color: var(--lm-text);
+  border-radius: 999px;
+  min-height: 48px;
+  padding: 5px 10px 5px 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: var(--lm-shadow-soft);
+}
+
+.navbar-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--lm-primary), var(--lm-secondary));
+  color: white;
+  font-weight: 950;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.navbar-avatar.large { width: 50px; height: 50px; }
+
+.navbar-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navbar-profile-copy {
+  display: grid;
+  text-align: left;
+  line-height: 1.1;
+}
+
+.navbar-profile-copy strong {
+  color: var(--lm-text);
+  font-size: 0.9rem;
+  font-weight: 950;
+}
+
+.navbar-profile-copy span {
+  color: var(--lm-muted);
+  font-size: 0.74rem;
+  font-weight: 850;
+}
+
+.rotate-icon { transform: rotate(180deg); }
+
+.navbar-profile-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 500;
+  width: 280px;
+  padding: 12px;
+  border-radius: 28px;
+  background: var(--lm-surface);
+  border: 1px solid var(--lm-border);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.22);
+  display: grid;
+  gap: 7px;
+}
+
+.navbar-profile-menu-head {
+  padding: 12px;
+  border-radius: 22px;
+  background: var(--lm-surface-soft);
+  border: 1px solid var(--lm-border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-profile-menu-head strong {
+  display: block;
+  color: var(--lm-text);
+  font-weight: 950;
+}
+
+.navbar-profile-menu-head span {
+  display: block;
+  margin-top: 3px;
+  color: var(--lm-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  word-break: break-word;
+}
+
+.navbar-profile-menu a,
+.navbar-profile-menu button {
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 17px;
+  border: none;
+  background: transparent;
+  color: var(--lm-text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 900;
+  text-align: left;
+  cursor: pointer;
+}
+
+.navbar-profile-menu a:hover,
+.navbar-profile-menu button:hover {
+  background: var(--lm-surface-soft);
+  color: var(--lm-primary);
+}
+
+.auth-only-app {
+  min-height: 100vh;
+  background: var(--lm-bg);
+}
+
+@media (max-width: 720px) {
+  .navbar-profile-copy { display: none; }
+
+  .navbar-profile-menu {
+    right: -6px;
+    width: min(280px, calc(100vw - 22px));
+  }
+}
